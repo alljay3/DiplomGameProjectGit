@@ -28,4 +28,18 @@ public class BerryBush : MonoBehaviour
         RefillAmount = _gameManager.GBerryBushSettings.DefaultRefillAmount;
         RefillTime = _gameManager.GBerryBushSettings.DefaultRefillTime;
     }
+
+    public void AddRefillAmout(int addingAmount)
+    {
+        RefillAmount += addingAmount;
+        if (RefillAmount < 0)
+            RefillAmount = 0;
+    }
+
+    public void AddRefillTime(float addingTime)
+    {
+        RefillTime += addingTime;
+        if (RefillTime < 0)
+            RefillTime = 0;
+    }
 }

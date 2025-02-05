@@ -24,4 +24,21 @@ public class WaterSource : MonoBehaviour
         RefillAmount = _gameManager.GWaterSourceSettings.DefaultRefillAmount;
         RefillTime = _gameManager.GWaterSourceSettings.DefaultRefillTime;
     }
+
+
+    public void AddRefillAmout(int addingAmount) 
+    {
+        RefillAmount += addingAmount;
+        if (RefillAmount < 0)
+            RefillAmount = 0;
+    }
+
+    public void AddRefillTime(float addingTime)
+    {
+        RefillTime += addingTime;
+        if (RefillTime < 0)
+            RefillTime = 0;
+    }
+
+
 }
