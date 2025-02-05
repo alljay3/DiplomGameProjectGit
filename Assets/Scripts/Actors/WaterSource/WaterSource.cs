@@ -54,6 +54,17 @@ public class WaterSource : MonoBehaviour
         CurrentWater = 0;
     }
 
+    public int DrinkFromBush(int countDrink)
+    {
+        if (countDrink > CurrentWater)
+        {
+            countDrink = CurrentWater;
+        }
+        CurrentWater -= countDrink;
+        return countDrink;
+    }
+
+
     IEnumerator RefillWaterOverTime()
     {
         while (true)

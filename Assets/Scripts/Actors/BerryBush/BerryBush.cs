@@ -57,9 +57,14 @@ public class BerryBush : MonoBehaviour
         CurrentFood = 0;
     }
 
-    public void EatFromBush()
+    public int EatFromBush(int countEat)
     {
-
+        if (countEat > CurrentFood)
+        {
+            countEat = CurrentFood;
+        }
+        CurrentFood -= countEat;
+        return countEat;
     }
 
     IEnumerator RefillFoodOverTime()
