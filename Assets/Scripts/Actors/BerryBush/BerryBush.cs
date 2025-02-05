@@ -6,15 +6,16 @@ using UnityEngine;
 /// </summary>
 public class BerryBush : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public int MaxFood;
+    public int CurrentFood;
+
+
+    [SerializeField] private GameManager _gameManager;
+
+
+    public void Start()
     {
-        
+        _gameManager = GameObject.FindFirstObjectByType<GameManager>();
     }
 }

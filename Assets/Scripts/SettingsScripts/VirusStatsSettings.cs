@@ -6,6 +6,6 @@ using UnityEngine;
 [System.Serializable]
 public struct VirusStatsSettings
 {
-    public int MaxHunger; // Текущий голод
-    public int MaxThirst; // Текущая жажда
+    public int MaxHunger; // Максимальный голод
+    public int MaxThirst; // Максимальная жажда
 }

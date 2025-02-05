@@ -5,10 +5,12 @@ using UnityEngine;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
-    public WorldSettings WSettings; // Настройки мира
-    public VirusSettings VSettings; // Настройки вируса
-    public VirusStatsSettings VStatsSettings; // Настройки статусов вируса
-    public VirusAttributesSettings ASettings; // Настройки атрибутов вируса
-    public WorldStats WStats; // Настройки мира
+    public WorldSettings GWorldSettings; // Настройки мира
+    public VirusSettings GVirusSettings; // Настройки вируса
+    public VirusStatsSettings GVirusStatsSettings; // Настройки статусов вируса
+    public VirusAttributesSettings GVirusAttributesSettings; // Настройки атрибутов вируса
+    public BerryBushSettings GBerryBushSettings; // Настройки источников пищи
+    public WaterSourceSettings GWaterSourceSettings; // Настройки водных источников
+    public WorldStats GWorldStats; // Настройки мира
 
 }
