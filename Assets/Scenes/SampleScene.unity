@@ -161,10 +161,10 @@ MonoBehaviour:
     MaxHunger: 0
     MaxThirst: 0
   GBerryBushSettings:
-    StartFood: 0
-    MaxFood: 0
-    DefaultRefillAmount: 0
-    DefaultRefillTime: 0
+    StartFood: 20
+    MaxFood: 100
+    DefaultRefillAmount: 1
+    DefaultRefillTime: 0.5
   GWaterSourceSettings:
     StartWater: 20
     MaxWater: 10000
