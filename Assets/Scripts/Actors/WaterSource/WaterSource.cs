@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -23,6 +24,7 @@ public class WaterSource : MonoBehaviour
             CurrentWater = _gameManager.GWaterSourceSettings.StartWater;
         RefillAmount = _gameManager.GWaterSourceSettings.DefaultRefillAmount;
         RefillTime = _gameManager.GWaterSourceSettings.DefaultRefillTime;
+        StartCoroutine(RefillWaterOverTime());
     }
 
 
@@ -39,6 +41,31 @@ public class WaterSource : MonoBehaviour
         if (RefillTime < 0)
             RefillTime = 0;
     }
+
+    public void AddMaxWater(int addingMaxWater)
+    {
+        MaxWater += addingMaxWater;
+        if (MaxWater < 0)
+            MaxWater = 0;
+    }
+
+    public void DropCurWater()
+    {
+        CurrentWater = 0;
+    }
+
+    IEnumerator RefillWaterOverTime()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(RefillTime);
+            CurrentWater += RefillAmount;
+            if (CurrentWater > MaxWater)
+            {
+                CurrentWater = MaxWater;
+            }
+        }
+    }    
 
 
 }

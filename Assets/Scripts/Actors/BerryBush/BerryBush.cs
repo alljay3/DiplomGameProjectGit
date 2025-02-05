@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 
@@ -27,6 +28,7 @@ public class BerryBush : MonoBehaviour
             CurrentFood = _gameManager.GBerryBushSettings.StartFood;
         RefillAmount = _gameManager.GBerryBushSettings.DefaultRefillAmount;
         RefillTime = _gameManager.GBerryBushSettings.DefaultRefillTime;
+        StartCoroutine(RefillFoodOverTime());
     }
 
     public void AddRefillAmout(int addingAmount)
@@ -41,5 +43,30 @@ public class BerryBush : MonoBehaviour
         RefillTime += addingTime;
         if (RefillTime < 0)
             RefillTime = 0;
+    }
+
+    public void AddMaxFood(int addingMaxFood)
+    {
+        MaxFood += addingMaxFood;
+        if (MaxFood < 0)
+            MaxFood = 0;
+    }
+
+    public void DropCurFood()
+    {
+        CurrentFood = 0;
+    }
+
+    IEnumerator RefillFoodOverTime()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(RefillTime);
+            CurrentFood += RefillAmount;
+            if (CurrentFood > MaxFood)
+            {
+                CurrentFood = MaxFood;
+            }
+        }
     }
 }

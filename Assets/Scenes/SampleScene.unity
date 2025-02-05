@@ -148,7 +148,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2d5af7799c457a418f69361480070ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WStats: {fileID: 0}
+  GWorldSettings:
+    VirusCountScore: 0
+    TimeUntilNextStage: 0
+  GVirusSettings:
+    DefaultVirusHp: 0
+    DefaultVirusSpeed: 0
+    DefaultVirusTempDmg: 0
+    DefaultVirusHungerDmg: 0
+    DefaultVirusThirstDmg: 0
+  GVirusStatsSettings:
+    MaxHunger: 0
+    MaxThirst: 0
+  GBerryBushSettings:
+    StartFood: 0
+    MaxFood: 0
+    DefaultRefillAmount: 0
+    DefaultRefillTime: 0
+  GWaterSourceSettings:
+    StartWater: 20
+    MaxWater: 10000
+    DefaultRefillAmount: 10
+    DefaultRefillTime: 1
+  GWorldStats:
+    Points: 0
+    NumberStage: 0
 --- !u!4 &310217989
 Transform:
   m_ObjectHideFlags: 0
@@ -415,6 +439,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: effcd6d49b97cf743a2f388f414facd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxWater: 0
+  CurrentWater: 0
+  RefillAmount: 0
+  RefillTime: 0
 --- !u!212 &1562654239
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -515,6 +543,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 334d834af4275cc4d83f75beab7895ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxFood: 0
+  CurrentFood: 0
+  RefillAmount: 0
+  RefillTime: 0
 --- !u!212 &1663664290
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -560,7 +592,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.21226418, g: 1, b: 0.30928895, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -636,6 +668,18 @@ PrefabInstance:
     - target: {fileID: 3932909370823368292, guid: 9e18ef42f7167d54e8e0483af4c309a2, type: 3}
       propertyPath: m_Name
       value: Virus
+      objectReference: {fileID: 0}
+    - target: {fileID: 4871091978457490993, guid: 9e18ef42f7167d54e8e0483af4c309a2, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4871091978457490993, guid: 9e18ef42f7167d54e8e0483af4c309a2, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4871091978457490993, guid: 9e18ef42f7167d54e8e0483af4c309a2, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
