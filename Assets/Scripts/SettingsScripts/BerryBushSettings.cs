@@ -7,7 +7,8 @@ using UnityEngine;
 
 public struct BerryBushSettings
 {
-    public int MaxFood;
-    public int RefillAmount;
-    public float RefillTime;
+    public int StartFood; // Начальное кол-во еды
+    public int MaxFood; // Максимальное кол-во еды
+    public int DefaultRefillAmount; // кол-во еды, которое поступает за DefaultRefillTime
+    public float DefaultRefillTime; // время, за которое поступает DefaultRefillAmount кол-во еды
 }

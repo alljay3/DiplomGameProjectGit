@@ -6,10 +6,22 @@ using UnityEngine;
 
 public class WaterSource : MonoBehaviour
 {
-    [SerializeField] private GameManager _gameManager;
+    public int MaxWater; // Максимальное кол-во воды
+    public int CurrentWater; // Текущее кол-во воды
+    public int RefillAmount; // кол-во воды, которое поступает за RefillTime
+    public float RefillTime; // время, за которое поступает RefillAmount кол-во воды
+
+    private GameManager _gameManager;
 
     public void Start()
     {
         _gameManager = GameObject.FindFirstObjectByType<GameManager>();
+        MaxWater = _gameManager.GWaterSourceSettings.MaxWater;
+        if (_gameManager.GWaterSourceSettings.StartWater > MaxWater)
+            CurrentWater = MaxWater;
+        else
+            CurrentWater = _gameManager.GWaterSourceSettings.StartWater;
+        RefillAmount = _gameManager.GWaterSourceSettings.DefaultRefillAmount;
+        RefillTime = _gameManager.GWaterSourceSettings.DefaultRefillTime;
     }
 }

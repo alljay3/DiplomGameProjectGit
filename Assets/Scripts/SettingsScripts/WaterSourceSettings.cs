@@ -9,7 +9,8 @@ using UnityEngine;
 
 public struct WaterSourceSettings
 {
-    public int MaxWater;
-    public int RefillAmount;
-    public float RefillTime;
+    public int StartWater; // Начальный запас воды
+    public int MaxWater; // Максимальное кол-во воды
+    public int DefaultRefillAmount; // кол-во воды, которое поступает за DefaultRefillTime
+    public float DefaultRefillTime; // время, за которое поступает DefaultRefillAmount кол-во воды
 }

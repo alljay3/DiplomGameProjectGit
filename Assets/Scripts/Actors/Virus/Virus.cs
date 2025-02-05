@@ -6,10 +6,10 @@ using UnityEngine;
 
 public class  Virus : MonoBehaviour
 {
-    public VirusStats Stats;
-    public VirusAttrubutes Attrubutes;
+    public VirusStats Stats; // Статусы вируса
+    public VirusAttrubutes Attrubutes; // Атрибуты вируса
 
-    [SerializeField] private GameManager _gameManager;
+    private GameManager _gameManager;
 
     public void Start()
     {
