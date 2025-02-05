@@ -1,12 +1,13 @@
 using UnityEngine;
-
+[System.Serializable]
 /// <summary>
 /// Статусы мира, изменяемые по ходу игры.
 /// </summary>
 
-public class WorldStats : MonoBehaviour
+
+public struct WorldStats
 {
-    public int Points = 0; // Кол-во очков
-    public int NumberStage = 0; // 
+    public int Points;
+    public int NumberStage;
 
 }

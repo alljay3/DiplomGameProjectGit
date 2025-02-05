@@ -1,6 +1,6 @@
 using UnityEngine;
 
-
+[System.Serializable]
 /// <summary>
 /// Статусы вируса,которые задаются и изменяются по ходу игры.
 /// </summary>

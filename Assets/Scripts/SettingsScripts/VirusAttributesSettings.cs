@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// Стандартные настройки атрибутов вируса, не изменяются по ходу игры.
+/// </summary>
+[System.Serializable]
 public struct VirusAttributesSettings
 {
     public AttributeRange ColdResistanceRange;

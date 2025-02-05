@@ -1,6 +1,6 @@
 using UnityEngine;
 
-
+[System.Serializable]
 /// <summary>
 /// Стандартные настройки мира, не изменяются по ходу игры.
 /// </summary>

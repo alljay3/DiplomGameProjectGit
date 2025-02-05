@@ -1,6 +1,6 @@
 using UnityEngine;
 
-
+[System.Serializable]
 /// <summary>
 /// Стандартные настройки вируса, не изменяются по ходу игры.
 /// </summary>

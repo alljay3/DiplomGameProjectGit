@@ -1,5 +1,7 @@
 using UnityEngine;
-
+/// <summary>
+/// —труктура, дл€ того, что бы задать диапозон
+/// </summary>
 public struct AttributeRange
 {
     public int Min;
