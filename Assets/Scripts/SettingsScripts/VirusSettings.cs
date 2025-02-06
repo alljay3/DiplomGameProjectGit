@@ -11,4 +11,8 @@ public struct VirusSettings
     public int DefaultVirusTempDmg; // Стандартный урон от температуры
     public int DefaultVirusHungerDmg; // Стандартный урон от голода
     public int DefaultVirusThirstDmg; // Стандартный урон от жажды
+    public int DefaultTimeTakeDmg; // Стандартное время для получение урона
+    public float DefaultScaleDmgTemp;
+    public float DefaultScaleHungerDmg;
+    public float DefaultScaleThirstDmg;
 }

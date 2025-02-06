@@ -9,20 +9,25 @@ public class  Virus : MonoBehaviour
     public VirusStats Stats; // Статусы вируса
     public VirusAttrubutes Attrubutes; // Атрибуты вируса
 
-    private GameManager _gameManager;
+    private SettingsManager _settingsManager;
 
     public void Start()
     {
-        _gameManager = GameObject.FindFirstObjectByType<GameManager>();
-        Attrubutes.ColdResistance = Random.Range(_gameManager.GVirusAttributesSettings.ColdResistanceRange.Min, _gameManager.GVirusAttributesSettings.ColdResistanceRange.Max);
-        Attrubutes.HeatResistance = Random.Range(_gameManager.GVirusAttributesSettings.HeatResistanceRange.Min, _gameManager.GVirusAttributesSettings.HeatResistanceRange.Max);
-        Attrubutes.MaxHealth = Random.Range(_gameManager.GVirusAttributesSettings.MaxHealthRange.Min, _gameManager.GVirusAttributesSettings.MaxHealthRange.Max);
-        Attrubutes.HealthRegeneration = Random.Range(_gameManager.GVirusAttributesSettings.HealthRegenerationRange.Min, _gameManager.GVirusAttributesSettings.HealthRegenerationRange.Max);
-        Attrubutes.ReproductionCooldown = Random.Range(_gameManager.GVirusAttributesSettings.ReproductionCooldownRange.Min, _gameManager.GVirusAttributesSettings.ReproductionCooldownRange.Max);
-        Attrubutes.HungerResistance = Random.Range(_gameManager.GVirusAttributesSettings.HungerResistanceRange.Min, _gameManager.GVirusAttributesSettings.HungerResistanceRange.Max);
-        Attrubutes.ThirstResistance = Random.Range(_gameManager.GVirusAttributesSettings.ThirstResistanceRange.Min, _gameManager.GVirusAttributesSettings.ThirstResistanceRange.Max);
-        Attrubutes.AgeImpact = Random.Range(_gameManager.GVirusAttributesSettings.AgeImpactRange.Min, _gameManager.GVirusAttributesSettings.AgeImpactRange.Max);
-        Attrubutes.MovementSpeed = Random.Range(_gameManager.GVirusAttributesSettings.MovementSpeedRange.Min, _gameManager.GVirusAttributesSettings.MovementSpeedRange.Max);
-        Attrubutes.ComfortTemperature = Random.Range(_gameManager.GVirusAttributesSettings.ComfortTemperatureRange.Min, _gameManager.GVirusAttributesSettings.ComfortTemperatureRange.Max);
+        _settingsManager = GameObject.FindFirstObjectByType<SettingsManager>();
+        Attrubutes.ColdResistance = Random.Range(_settingsManager.NVirusAttributesSettings.ColdResistanceRange.Min, _settingsManager.NVirusAttributesSettings.ColdResistanceRange.Max);
+        Attrubutes.HeatResistance = Random.Range(_settingsManager.NVirusAttributesSettings.HeatResistanceRange.Min, _settingsManager.NVirusAttributesSettings.HeatResistanceRange.Max);
+        Attrubutes.MaxHealth = Random.Range(_settingsManager.NVirusAttributesSettings.MaxHealthRange.Min, _settingsManager.NVirusAttributesSettings.MaxHealthRange.Max);
+        Attrubutes.HealthRegeneration = Random.Range(_settingsManager.NVirusAttributesSettings.HealthRegenerationRange.Min, _settingsManager.NVirusAttributesSettings.HealthRegenerationRange.Max);
+        Attrubutes.ReproductionCooldown = Random.Range(_settingsManager.NVirusAttributesSettings.ReproductionCooldownRange.Min, _settingsManager.NVirusAttributesSettings.ReproductionCooldownRange.Max);
+        Attrubutes.HungerResistance = Random.Range(_settingsManager.NVirusAttributesSettings.HungerResistanceRange.Min, _settingsManager.NVirusAttributesSettings.HungerResistanceRange.Max);
+        Attrubutes.ThirstResistance = Random.Range(_settingsManager.NVirusAttributesSettings.ThirstResistanceRange.Min, _settingsManager.NVirusAttributesSettings.ThirstResistanceRange.Max);
+        Attrubutes.AgeImpact = Random.Range(_settingsManager.NVirusAttributesSettings.AgeImpactRange.Min, _settingsManager.NVirusAttributesSettings.AgeImpactRange.Max);
+        Attrubutes.MovementSpeed = Random.Range(_settingsManager.NVirusAttributesSettings.MovementSpeedRange.Min, _settingsManager.NVirusAttributesSettings.MovementSpeedRange.Max);
+        Attrubutes.ComfortTemperature = Random.Range(_settingsManager.NVirusAttributesSettings.ComfortTemperatureRange.Min, _settingsManager.NVirusAttributesSettings.ComfortTemperatureRange.Max);
+    }
+
+    public void TakeDmg()
+    {
+
     }
 }

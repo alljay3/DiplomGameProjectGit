@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 310217989}
   - component: {fileID: 310217988}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: SettingsManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,31 +148,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2d5af7799c457a418f69361480070ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GWorldSettings:
-    VirusCountScore: 0
-    TimeUntilNextStage: 0
-  GVirusSettings:
-    DefaultVirusHp: 0
-    DefaultVirusSpeed: 0
-    DefaultVirusTempDmg: 0
-    DefaultVirusHungerDmg: 0
-    DefaultVirusThirstDmg: 0
-  GVirusStatsSettings:
-    MaxHunger: 0
-    MaxThirst: 0
-  GBerryBushSettings:
-    StartFood: 20
+  NWorldSettings:
+    FirstStage: 1
+    StartPoints: 10
+    VirusCountScore: 5
+    TimeUntilNextStage: 15
+  NVirusSettings:
+    DefaultVirusHp: 100
+    DefaultVirusSpeed: 1
+    DefaultVirusTempDmg: 5
+    DefaultVirusHungerDmg: 5
+    DefaultVirusThirstDmg: 5
+    DefaultTimeTakeDmg: 1
+    DefaultScaleDmgTemp: 1
+    DefaultScaleHungerDmg: 1
+    DefaultScaleThirstDmg: 1
+  NVirusStatsSettings:
+    MaxHunger: 100
+    MaxThirst: 100
+  NBerryBushSettings:
+    StartFood: 30
     MaxFood: 100
-    DefaultRefillAmount: 1
+    DefaultRefillAmount: 5
     DefaultRefillTime: 0.5
-  GWaterSourceSettings:
-    StartWater: 20
-    MaxWater: 10000
+  NWaterSourceSettings:
+    StartWater: 300
+    MaxWater: 1000
     DefaultRefillAmount: 10
     DefaultRefillTime: 1
-  GWorldStats:
-    Points: 0
-    NumberStage: 0
 --- !u!4 &310217989
 Transform:
   m_ObjectHideFlags: 0
@@ -404,6 +407,55 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1046923181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1046923183}
+  - component: {fileID: 1046923182}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1046923182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046923181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8636f9bb2735e31408c644c3e14141b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GWorldStats:
+    Points: 0
+    NumberStage: 0
+    TimeLeft: 0
+    TimeToNextStage: 0
+--- !u!4 &1046923183
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046923181}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.0356066, y: -0.23210539, z: -9.953528}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -733,3 +785,4 @@ SceneRoots:
   - {fileID: 310217989}
   - {fileID: 1562654240}
   - {fileID: 1663664291}
+  - {fileID: 1046923183}

@@ -14,20 +14,20 @@ public class BerryBush : MonoBehaviour
     public float RefillTime; // время, за которое поступает RefillAmount кол-во еды
 
 
-    private GameManager _gameManager;
+    private SettingsManager _settingsManager;
 
 
     public void Start()
     {
-        _gameManager = GameObject.FindFirstObjectByType<GameManager>();
-        MaxFood = _gameManager.GBerryBushSettings.MaxFood;
-        CurrentFood = _gameManager.GBerryBushSettings.StartFood;
-        if (_gameManager.GBerryBushSettings.StartFood > MaxFood)
+        _settingsManager = GameObject.FindFirstObjectByType<SettingsManager>();
+        MaxFood = _settingsManager.NBerryBushSettings.MaxFood;
+        CurrentFood = _settingsManager.NBerryBushSettings.StartFood;
+        if (_settingsManager.NBerryBushSettings.StartFood > MaxFood)
             CurrentFood = MaxFood;
         else
-            CurrentFood = _gameManager.GBerryBushSettings.StartFood;
-        RefillAmount = _gameManager.GBerryBushSettings.DefaultRefillAmount;
-        RefillTime = _gameManager.GBerryBushSettings.DefaultRefillTime;
+            CurrentFood = _settingsManager.NBerryBushSettings.StartFood;
+        RefillAmount = _settingsManager.NBerryBushSettings.DefaultRefillAmount;
+        RefillTime = _settingsManager.NBerryBushSettings.DefaultRefillTime;
         StartCoroutine(RefillFoodOverTime());
     }
 

@@ -12,18 +12,18 @@ public class WaterSource : MonoBehaviour
     public int RefillAmount; // кол-во воды, которое поступает за RefillTime
     public float RefillTime; // время, за которое поступает RefillAmount кол-во воды
 
-    private GameManager _gameManager;
+    private SettingsManager _settingsManager;
 
     public void Start()
     {
-        _gameManager = GameObject.FindFirstObjectByType<GameManager>();
-        MaxWater = _gameManager.GWaterSourceSettings.MaxWater;
-        if (_gameManager.GWaterSourceSettings.StartWater > MaxWater)
+        _settingsManager = GameObject.FindFirstObjectByType<SettingsManager>();
+        MaxWater = _settingsManager.NWaterSourceSettings.MaxWater;
+        if (_settingsManager.NWaterSourceSettings.StartWater > MaxWater)
             CurrentWater = MaxWater;
         else
-            CurrentWater = _gameManager.GWaterSourceSettings.StartWater;
-        RefillAmount = _gameManager.GWaterSourceSettings.DefaultRefillAmount;
-        RefillTime = _gameManager.GWaterSourceSettings.DefaultRefillTime;
+            CurrentWater = _settingsManager.NWaterSourceSettings.StartWater;
+        RefillAmount = _settingsManager.NWaterSourceSettings.DefaultRefillAmount;
+        RefillTime = _settingsManager.NWaterSourceSettings.DefaultRefillTime;
         StartCoroutine(RefillWaterOverTime());
     }
 
