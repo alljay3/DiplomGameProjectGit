@@ -1,4 +1,14 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
+
+public enum VirusTask
+{
+    Drink,    // Пить
+    Eat,      // Есть
+    Hold,     // Ждать
+    Reproduce // Размножаться
+}
 
 /// <summary>
 /// Класс вируса
@@ -9,12 +19,60 @@ public class  Virus : MonoBehaviour
     public VirusStats Stats; // Статусы вируса
     public VirusAttrubutes Attrubutes; // Атрибуты вируса
 
+    public VirusTask Task;
+
     private SettingsManager _settingsManager;
 
     public void Start()
     {
-        FirstStart();
+        FirstStart(); // Нужно вызывать только если особь из первого поколения
         InitStats();
+        StartCoroutine(ChangeHunger());
+        StartCoroutine(ChangeThirst());
+        Task = VirusTask.Hold;
+    } 
+
+    public void FixedUpdate()
+    {
+        ChooseTask();
+        RelizeTask();
+    }
+
+    public void ChooseTask() // Выбрать задачу вируса
+    {
+        if (Task != VirusTask.Hold)
+            return;
+
+        if (Stats.CurrentHunger <= _settingsManager.NVirusSettings.EatThreshold)
+            Task = VirusTask.Eat;
+        if (Stats.CurrentThirst <= _settingsManager.NVirusSettings.DrinkThreshold)
+            Task = VirusTask.Drink;
+    }
+
+
+    public void RelizeTask() // Реализовать задачу
+    {
+        if (Task == VirusTask.Drink)
+            Drink();
+        if (Task == VirusTask.Eat)
+            Eat();
+        if (Task == VirusTask.Reproduce)
+            Reproduce();
+    }
+
+    private void Drink()
+    {
+
+    }
+
+    private void Eat()
+    {
+
+    }
+
+    private void Reproduce()
+    {
+
     }
 
     public void FirstStart() // Вызывается, если особи первые в игровом мире
@@ -35,7 +93,7 @@ public class  Virus : MonoBehaviour
     public void TakeDmg()
     {
 
-    }
+    } // Получить урон
 
     public void InitStats()// Инициализация статов
     {
@@ -62,15 +120,38 @@ public class  Virus : MonoBehaviour
 
     private void ChangeMaxHealth()
     {
-        Stats.CurrentMaxHealth -= (_settingsManager.NVirusAttributesSettings.DefaultMaxAttribute - Attrubutes.AgeImpact); 
-    }
+        Stats.CurrentMaxHealth -= (_settingsManager.NVirusAttributesSettings.DefaultMaxAttribute - Attrubutes.AgeImpact);
+    } // Поменять максимальное hp
 
     public void NextStage()
     {
         Stats.CurrentAge += 1;
         ChangeMaxHealth();
-    }
+    } // Новая стадия
 
+    IEnumerator ChangeHunger()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(_settingsManager.NVirusSettings.HungerDepletionSpeed);
+            if (Stats.CurrentHunger > 0)
+                Stats.CurrentHunger -= _settingsManager.NVirusSettings.HungerDepletionAmount;
+            if (Stats.CurrentHunger < 0)
+                Stats.CurrentHunger = 0;
+        }
+    } // Изменение голода
+
+    IEnumerator ChangeThirst()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(_settingsManager.NVirusSettings.waterDepletionSpeed);
+            if (Stats.CurrentThirst > 0)
+                Stats.CurrentThirst -= _settingsManager.NVirusSettings.waterDepletionAmount;
+            if (Stats.CurrentThirst < 0)
+                Stats.CurrentThirst = 0;
+        }
+    } // изменение жажды
 
 
 

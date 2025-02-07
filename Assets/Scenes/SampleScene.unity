@@ -159,12 +159,16 @@ MonoBehaviour:
     DefaultVirusThirstDmg: 5
     DefaultTimeTakeDmg: 1
     DefaultScaleTempDmg: 1
-    DefaultScaleHungerDmg: 1
-    DefaultScaleThirstDmg: 1
-    HungerDepletionSpeed: 0
-    HungerDepletionAmount: 0
-    waterDepletionSpeed: 0
-    waterDepletionAmount: 0
+    HungerDepletionSpeed: 0.5
+    HungerDepletionAmount: 1
+    EatDepletionSpeed: 0.1
+    EatDepletionAmount: 5
+    EatThreshold: 30
+    waterDepletionSpeed: 0.5
+    waterDepletionAmount: 1
+    DrinkDepletionSpeed: 0.1
+    DrinkDepletionAmount: 5
+    DrinkThreshold: 30
   NVirusStatsSettings:
     DefaultMaxHunger: 100
     DefaultMaxThirst: 100
