@@ -6,14 +6,21 @@ using UnityEngine;
 [System.Serializable]
 public struct VirusAttributesSettings
 {
-    public AttributeRange ColdResistanceRange;
-    public AttributeRange HeatResistanceRange;
-    public AttributeRange MaxHealthRange;
-    public AttributeRange HealthRegenerationRange;
-    public AttributeRange ReproductionCooldownRange;
-    public AttributeRange HungerResistanceRange;
-    public AttributeRange ThirstResistanceRange;
-    public AttributeRange AgeImpactRange;
-    public AttributeRange MovementSpeedRange;
-    public AttributeRange ComfortTemperatureRange;
+    public AttributeRange ColdResistanceRange; // Сопротивление Холоду
+    public AttributeRange HeatResistanceRange;// Сопротивление Жаре
+    public AttributeRange MaxHealthRange; // Максимальное здоровье
+    public AttributeRange HealthRegenerationRange; //Максмальная регенерация
+    public AttributeRange ReproductionCooldownRange; //Время для следущего размножения
+    public AttributeRange HungerResistanceRange; //Сопротивление голоду
+    public AttributeRange ThirstResistanceRange; // Сопротивление Жажаде
+    public AttributeRange AgeImpactRange; // Влияние возраста на макс хп
+    public AttributeRange MovementSpeedRange; // Скорость
+    public AttributeRange ComfortTemperatureRange; // Комфортная температура
+
+    public int DefaultMaxHealthScale; // На сколько влияет скорость передвижения
+    public float DefaultMoveSpeedScale; // На сколько влияет скорость передвижения
+
+
+    public int DefaultMinAttribute; // Минимальный показатель аттрибутов
+    public int DefaultMaxAttribute; // Максимальный показалеть аттрибутов
 }

@@ -2,6 +2,8 @@ using UnityEngine;
 /// <summary>
 /// —труктура, дл€ того, что бы задать диапозон
 /// </summary>
+/// 
+[System.Serializable]
 public struct AttributeRange
 {
     public int Min;

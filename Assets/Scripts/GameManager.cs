@@ -38,5 +38,8 @@ public class GameManager : MonoBehaviour
     private void NextStage()
     {
         GWorldStats.NumberStage += 1;
+        Virus[] viruses = FindObjectsByType<Virus>(FindObjectsSortMode.None);
+        foreach (var virus in viruses)
+            virus.NextStage();
     }
 }

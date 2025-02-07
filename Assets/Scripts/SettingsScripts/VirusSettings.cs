@@ -6,13 +6,20 @@ using UnityEngine;
 /// </summary>
 public struct VirusSettings
 {
-    public int DefaultVirusHp; // Стандартное значение для жизни вируса
-    public float DefaultVirusSpeed; // Стандартное значение для скорости вируса
     public int DefaultVirusTempDmg; // Стандартный урон от температуры
     public int DefaultVirusHungerDmg; // Стандартный урон от голода
     public int DefaultVirusThirstDmg; // Стандартный урон от жажды
     public int DefaultTimeTakeDmg; // Стандартное время для получение урона
-    public float DefaultScaleDmgTemp;
-    public float DefaultScaleHungerDmg;
-    public float DefaultScaleThirstDmg;
+    public float DefaultScaleTempDmg; // Увеличение урона от температуры
+    public float DefaultScaleHungerDmg; // Увеличение урона от голода 
+    public float DefaultScaleThirstDmg; // Увеличение урона от жажды
+
+    public float HungerDepletionSpeed; // Скорость голодания
+    public int HungerDepletionAmount; // Количество голодания
+
+    public float waterDepletionSpeed; // Скрорость уменьшение воды
+     
+    public int waterDepletionAmount; // Кол-во уменьшение воды
+
+
 }

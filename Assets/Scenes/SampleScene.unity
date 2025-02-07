@@ -149,23 +149,63 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NWorldSettings:
-    FirstStage: 1
+    FirstStage: 0
     StartPoints: 10
     VirusCountScore: 5
     TimeUntilNextStage: 15
   NVirusSettings:
-    DefaultVirusHp: 100
-    DefaultVirusSpeed: 1
     DefaultVirusTempDmg: 5
     DefaultVirusHungerDmg: 5
     DefaultVirusThirstDmg: 5
     DefaultTimeTakeDmg: 1
-    DefaultScaleDmgTemp: 1
+    DefaultScaleTempDmg: 1
     DefaultScaleHungerDmg: 1
     DefaultScaleThirstDmg: 1
+    HungerDepletionSpeed: 0
+    HungerDepletionAmount: 0
+    waterDepletionSpeed: 0
+    waterDepletionAmount: 0
   NVirusStatsSettings:
-    MaxHunger: 100
-    MaxThirst: 100
+    DefaultMaxHunger: 100
+    DefaultMaxThirst: 100
+    DefaultVirusHp: 1000
+    DefaultMoveSpeed: 1
+    DefaultAge: 0
+  NVirusAttributesSettings:
+    ColdResistanceRange:
+      Min: 1
+      Max: 5
+    HeatResistanceRange:
+      Min: 1
+      Max: 5
+    MaxHealthRange:
+      Min: 1
+      Max: 5
+    HealthRegenerationRange:
+      Min: 1
+      Max: 5
+    ReproductionCooldownRange:
+      Min: 1
+      Max: 5
+    HungerResistanceRange:
+      Min: 1
+      Max: 5
+    ThirstResistanceRange:
+      Min: 1
+      Max: 5
+    AgeImpactRange:
+      Min: 1
+      Max: 5
+    MovementSpeedRange:
+      Min: 1
+      Max: 5
+    ComfortTemperatureRange:
+      Min: 30
+      Max: 35
+    DefaultMaxHealthScale: 10
+    DefaultMoveSpeedScale: 0.1
+    DefaultMinAttribute: 1
+    DefaultMaxAttribute: 100
   NBerryBushSettings:
     StartFood: 30
     MaxFood: 100
