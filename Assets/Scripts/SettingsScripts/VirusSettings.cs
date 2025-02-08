@@ -24,7 +24,9 @@ public struct VirusSettings
     public int waterDepletionAmount; //  ол-во уменьшение воды
     public float DrinkDepletionSpeed; // —корость пить€
     public int DrinkDepletionAmount; //  ол-во пить€
-    public int DrinkThreshold; // пороговое значение в процентах, при котором нужно попить.
+    public int DrinkThreshold; // пороговое значение, при котором нужно попить.
 
+    public int MinFoodToEat; // ѕороговое значение, при котором можно идти к кусту
+    public int MinWaterToDrink; // ѕороговое значение, при котором можно идти к кусту
 
 }

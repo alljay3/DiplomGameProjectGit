@@ -1,12 +1,16 @@
 using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
 public enum VirusTask
 {
-    Drink,    // Пить
-    Eat,      // Есть
+    Thirst,    // Жажда
+    Hunger,      // Голод
     Hold,     // Ждать
+    Eat, // Ест
+    Drink, // Пьет
     Reproduce // Размножаться
 }
 
@@ -22,6 +26,8 @@ public class  Virus : MonoBehaviour
     public VirusTask Task;
 
     private SettingsManager _settingsManager;
+    private float _lastDrinkTime = 0f;
+    private float _lastEatTime = 0f;
 
     public void Start()
     {
@@ -44,35 +50,114 @@ public class  Virus : MonoBehaviour
             return;
 
         if (Stats.CurrentHunger <= _settingsManager.NVirusSettings.EatThreshold)
-            Task = VirusTask.Eat;
+            Task = VirusTask.Hunger;
         if (Stats.CurrentThirst <= _settingsManager.NVirusSettings.DrinkThreshold)
-            Task = VirusTask.Drink;
+            Task = VirusTask.Thirst;
     }
 
 
     public void RelizeTask() // Реализовать задачу
     {
-        if (Task == VirusTask.Drink)
-            Drink();
-        if (Task == VirusTask.Eat)
-            Eat();
+        if (Task == VirusTask.Thirst)
+            GoDrink();
+        if (Task == VirusTask.Hunger)
+            GoEat();
         if (Task == VirusTask.Reproduce)
-            Reproduce();
+            GoReproduce();
     }
 
-    private void Drink()
+    private void GoDrink()
     {
+        WaterSource[] WaterSources = GameObject.FindObjectsByType<WaterSource>(FindObjectsSortMode.None);
+        float MinDistance = float.MaxValue;
+        WaterSource NearestWaterSource = null;
+        foreach (WaterSource source in WaterSources) 
+        { 
+            if (Vector3.Distance(source.transform.position, transform.position) < MinDistance && _settingsManager.NVirusSettings.MinWaterToDrink < source.CurrentWater)
+            {
+                NearestWaterSource = source;
+                MinDistance = Vector3.Distance(source.transform.position, transform.position);
+            }
+        }
+        if (NearestWaterSource != null)
+        {
+            MoveTowards(NearestWaterSource.transform.position);
+        }
 
     }
 
-    private void Eat()
+    private void GoEat()
     {
+        BerryBush[] BerryBushes = GameObject.FindObjectsByType<BerryBush>(FindObjectsSortMode.None);
+        float MinDistance = float.MaxValue;
+        BerryBush NearestBerryBush = null;
+        foreach (BerryBush bush in BerryBushes)
+        {
+            if (Vector3.Distance(bush.transform.position, transform.position) < MinDistance && _settingsManager.NVirusSettings.MinFoodToEat < bush.CurrentFood)
+            {
+                NearestBerryBush = bush;
+                MinDistance = Vector3.Distance(bush.transform.position, transform.position);
+            }
+        }
+        if (NearestBerryBush != null)
+        {
+            MoveTowards(NearestBerryBush.transform.position);
+        }
+    }
+
+    private void GoReproduce()
+    {
+
 
     }
 
-    private void Reproduce()
+    void MoveTowards(Vector3 targetPosition)
     {
+        // Плавное перемещение к целевой позиции
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, Stats.CurrentMovementSpeed * Time.fixedDeltaTime);
+    }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {       
+        if ((Task == VirusTask.Thirst || Task == VirusTask.Drink) && collision.gameObject.TryGetComponent<WaterSource>(out WaterSource source))
+        {
+            Task = VirusTask.Drink;
+            if (Time.time - _lastDrinkTime >= _settingsManager.NVirusSettings.DrinkDepletionSpeed)
+            {
+                int countDrink = source.DrinkFromBush(_settingsManager.NVirusSettings.DrinkDepletionAmount);
+                if (countDrink == 0)
+                {
+                    Task = VirusTask.Hold;
+                }
+                Stats.CurrentThirst += countDrink;
+                _lastDrinkTime = Time.time; 
+
+                if (Stats.CurrentThirst >= Stats.MaxThirst)
+                {
+                    Task = VirusTask.Hold;
+                }
+            }
+        }
+
+        if ((Task == VirusTask.Hunger || Task == VirusTask.Eat) && collision.gameObject.TryGetComponent<BerryBush>(out BerryBush bush))
+        {
+            Task = VirusTask.Eat;
+            if (Time.time - _lastEatTime >= _settingsManager.NVirusSettings.EatDepletionSpeed)
+            {
+                int countEat = bush.EatFromBush(_settingsManager.NVirusSettings.EatDepletionAmount);
+                if (countEat == 0)
+                {
+                    Task = VirusTask.Hold;
+                }
+                Stats.CurrentHunger += countEat;
+                _lastEatTime = Time.time;
+
+                if (Stats.CurrentHunger >= Stats.MaxHunger)
+                {
+                    Task = VirusTask.Hold;
+                }
+            }
+        }
     }
 
     public void FirstStart() // Вызывается, если особи первые в игровом мире
@@ -99,8 +184,8 @@ public class  Virus : MonoBehaviour
     {
         Stats.MaxHunger = _settingsManager.NVirusStatsSettings.DefaultMaxHunger;
         Stats.MaxThirst = _settingsManager.NVirusStatsSettings.DefaultMaxThirst;
-        Stats.CurrentHunger = Stats.MaxHunger;
-        Stats.CurrentThirst = Stats.MaxThirst;
+        Stats.CurrentHunger = _settingsManager.NVirusStatsSettings.DefaultStartHunger;
+        Stats.CurrentThirst = _settingsManager.NVirusStatsSettings.DefaultStartThirst;
         Stats.CurrentAge = _settingsManager.NVirusStatsSettings.DefaultAge;
         Stats.CurrentMaxHealth = _settingsManager.NVirusStatsSettings.DefaultVirusHp + Attrubutes.MaxHealth * _settingsManager.NVirusAttributesSettings.DefaultMaxHealthScale;
         Stats.CurrentHealth = Stats.CurrentMaxHealth;
@@ -111,7 +196,7 @@ public class  Virus : MonoBehaviour
         Stats.CurrentHungerResistance = Attrubutes.HungerResistance;
         Stats.CurrentThirstResistance = Attrubutes.ThirstResistance;
         Stats.CurrentAgeImpact = Attrubutes.AgeImpact;
-        Stats.CurrentMovementSpeed = Attrubutes.MovementSpeed * _settingsManager.NVirusAttributesSettings.DefaultMoveSpeedScale * _settingsManager.NVirusStatsSettings.DefaultMoveSpeed;
+        Stats.CurrentMovementSpeed = _settingsManager.NVirusStatsSettings.DefaultMoveSpeed + Attrubutes.MovementSpeed * _settingsManager.NVirusAttributesSettings.DefaultMoveSpeedScale;
         Stats.CurrentComfortTemperature = Attrubutes.ComfortTemperature;
 
         for (int i = 0; i < Stats.CurrentAge;  i++)
