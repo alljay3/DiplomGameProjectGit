@@ -17,7 +17,7 @@ public class BerryBush : MonoBehaviour
     private SettingsManager _settingsManager;
 
 
-    public void Start()
+    public void Start() // »нициализирует начальные значени€ куста
     {
         _settingsManager = GameObject.FindFirstObjectByType<SettingsManager>();
         MaxFood = _settingsManager.NBerryBushSettings.MaxFood;
@@ -31,21 +31,21 @@ public class BerryBush : MonoBehaviour
         StartCoroutine(RefillFoodOverTime());
     }
 
-    public void AddRefillAmout(int addingAmount)
+    public void AddRefillAmout(int addingAmount) // ƒобавл€ет или уменьшает количество еды, восстанавливаемое за определЄнное врем€
     {
         RefillAmount += addingAmount;
         if (RefillAmount < 0)
             RefillAmount = 0;
     }
 
-    public void AddRefillTime(float addingTime)
+    public void AddRefillTime(float addingTime) // ƒобавл€ет или уменьшает врем€ восстановлени€ еды (RefillTime).
     {
         RefillTime += addingTime;
         if (RefillTime < 0)
             RefillTime = 0;
     }
 
-    public void AddMaxFood(int addingMaxFood)
+    public void AddMaxFood(int addingMaxFood) // ƒобавл€ет или уменьшает максимальное количество еды (MaxFood).
     {
         MaxFood += addingMaxFood;
         if (MaxFood < 0)

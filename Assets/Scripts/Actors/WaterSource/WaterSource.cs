@@ -54,7 +54,7 @@ public class WaterSource : MonoBehaviour
         CurrentWater = 0;
     }
 
-    public int DrinkFromBush(int countDrink)
+    public int DrinkFromSource(int countDrink)
     {
         if (countDrink > CurrentWater)
         {

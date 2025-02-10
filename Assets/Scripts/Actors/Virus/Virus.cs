@@ -124,7 +124,7 @@ public class  Virus : MonoBehaviour
             Task = VirusTask.Drink;
             if (Time.time - _lastDrinkTime >= _settingsManager.NVirusSettings.DrinkDepletionSpeed)
             {
-                int countDrink = source.DrinkFromBush(_settingsManager.NVirusSettings.DrinkDepletionAmount);
+                int countDrink = source.DrinkFromSource(_settingsManager.NVirusSettings.DrinkDepletionAmount);
                 if (countDrink == 0)
                 {
                     Task = VirusTask.Hold;
