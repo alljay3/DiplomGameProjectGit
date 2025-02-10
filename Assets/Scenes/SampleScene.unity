@@ -1209,7 +1209,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &294632710
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1315,6 +1315,18 @@ MonoBehaviour:
     VirusCountScore: 5
     TimeUntilNextStage: 15
     FirstTemp: 24
+    CostUpTemp: 1
+    CostDownTemp: 1
+    CostSuperUpTemp: 20
+    CostSuperDownTemp: 20
+    CostDropFood: 20
+    CostDropWater: 20
+    UpTempAmount: 1
+    UpTempTime: 1
+    DownTempAmount: 1
+    DownTempTime: 1
+    SuperUpTempAmount: 15
+    SuperDownTempAmount: 15
   NVirusSettings:
     DefaultVirusTempDmg: 5
     DefaultVirusHungerDmg: 5
@@ -3417,7 +3429,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -383.7, y: -8.1}
+  m_AnchoredPosition: {x: -375.5, y: -8.1}
   m_SizeDelta: {x: 86.6, y: 55.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &618263276
@@ -3505,7 +3517,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 32.195618, y: 0, z: -219.67087, w: -96.58698}
+  m_margin: {x: -270.82526, y: 0, z: -395.10413, w: -96.58698}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3912,7 +3924,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 32.195618, y: 0, z: -219.67087, w: -96.58698}
+  m_margin: {x: -265.5091, y: 0, z: -528.0081, w: -96.58698}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5104,6 +5116,14 @@ MonoBehaviour:
   CurrentHunger: {fileID: 1257940173}
   CurrentThirst: {fileID: 313000229}
   CurrentAge: {fileID: 425685451}
+  UpTempCost: {fileID: 388349516}
+  DownTempCost: {fileID: 182838944}
+  SuperUpTempCost: {fileID: 1356533279}
+  SuperDownTempCost: {fileID: 444169397}
+  DropFoodCost: {fileID: 169142775}
+  DropWaterCost: {fileID: 1293969725}
+  CurFood: {fileID: 618263276}
+  CurWater: {fileID: 728794992}
   VirusPanel: {fileID: 294632709}
   BerryPanel: {fileID: 1453659440}
   WaterSourcePanel: {fileID: 1147881}
@@ -7706,7 +7726,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1453659441
 RectTransform:
   m_ObjectHideFlags: 0

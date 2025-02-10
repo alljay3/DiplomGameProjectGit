@@ -22,9 +22,22 @@ public class Interface : MonoBehaviour
     [SerializeField] public TMPro.TextMeshProUGUI CurrentHunger; // Текущий голод
     [SerializeField] public TMPro.TextMeshProUGUI CurrentThirst; // Текущая жажда
     [SerializeField] public TMPro.TextMeshProUGUI CurrentAge;    // Текущий возраст
-    [SerializeField] public GameObject VirusPanel;
-    [SerializeField] public GameObject BerryPanel;
-    [SerializeField] public GameObject WaterSourcePanel;
+    [SerializeField] public TMPro.TextMeshProUGUI UpTempCost;
+    [SerializeField] public TMPro.TextMeshProUGUI DownTempCost;
+    [SerializeField] public TMPro.TextMeshProUGUI SuperUpTempCost;
+    [SerializeField] public TMPro.TextMeshProUGUI SuperDownTempCost;
+    [SerializeField] public TMPro.TextMeshProUGUI DropFoodCost;
+    [SerializeField] public TMPro.TextMeshProUGUI DropWaterCost;
+    [SerializeField] public TMPro.TextMeshProUGUI CurFood;
+    [SerializeField] public TMPro.TextMeshProUGUI CurWater;
+    [SerializeField] public GameObject VirusPanel; // Вирусная панель
+    [SerializeField] public GameObject BerryPanel; // Ягодная панель
+    [SerializeField] public GameObject WaterSourcePanel; //Водная панель
+
+     
+
+
+
     private SettingsManager _settingsManager;
 
     private GameObject _selectedObject;
@@ -35,7 +48,7 @@ public class Interface : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        UpPanel();
+        OtherPanel();
         DisableAllDownPanel();
         if (_selectedObject != null)
         {
@@ -74,18 +87,26 @@ public class Interface : MonoBehaviour
     private void ActiveBerryBushPanel()
     {
         BerryPanel.SetActive(true);
+        CurFood.text = _selectedObject.GetComponent<BerryBush>().CurrentFood.ToString() + "/" + _settingsManager.NBerryBushSettings.MaxFood.ToString();
     }
     private void ActiveWaterSourcePanel()
     {
         WaterSourcePanel.SetActive(true);
+        CurWater.text = _selectedObject.GetComponent<WaterSource>().CurrentWater.ToString() + "/" + _settingsManager.NWaterSourceSettings.MaxWater.ToString();
     }
 
-    private void UpPanel()
+    private void OtherPanel()
     {
         CurrentStage.text = _gameManager.GWorldStats.NumberStage.ToString();
         Points.text = _gameManager.GWorldStats.Points.ToString();
         TimeLeft.text = _gameManager.GWorldStats.TimeLeft.ToString();
         Temp.text = _gameManager.GWorldStats.CurTemp.ToString();
+        UpTempCost.text = _settingsManager.NWorldSettings.CostUpTemp.ToString() + "/" + _settingsManager.NWorldSettings.UpTempTime + "сек";
+        DownTempCost.text = _settingsManager.NWorldSettings.CostDownTemp.ToString() + "/" + _settingsManager.NWorldSettings.DownTempTime + "сек";
+        SuperUpTempCost.text = _settingsManager.NWorldSettings.CostSuperUpTemp.ToString() + "/" + _settingsManager.NWorldSettings.SuperUpTempAmount + "раз";
+        SuperDownTempCost.text = _settingsManager.NWorldSettings.CostUpTemp.ToString() + "/" + _settingsManager.NWorldSettings.SuperDownTempAmount + "раз";
+        DropFoodCost.text = _settingsManager.NWorldSettings.CostDropFood.ToString() + "/раз";
+        DropWaterCost.text = _settingsManager.NWorldSettings.CostDropFood.ToString() + "/раз";
     }
 
     public void SetSelectedObject(GameObject obj)
