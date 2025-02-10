@@ -79,4 +79,9 @@ public class BerryBush : MonoBehaviour
             }
         }
     }
+
+    private void OnMouseDown()
+    {
+        GameObject.FindFirstObjectByType<Interface>().SetSelectedObject(gameObject);
+    }
 }

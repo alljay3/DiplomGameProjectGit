@@ -76,7 +76,12 @@ public class WaterSource : MonoBehaviour
                 CurrentWater = MaxWater;
             }
         }
-    }    
+    }
+
+    private void OnMouseDown()
+    {
+        GameObject.FindFirstObjectByType<Interface>().SetSelectedObject(gameObject);
+    }
 
 
 }

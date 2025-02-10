@@ -7,6 +7,7 @@ using UnityEngine;
 
 public struct WorldStats
 {
+    public int CurTemp; // Текущая температура
     public int Points; // Очки игркоа
     public int NumberStage; // Номер стадии
     public int TimeLeft; //Время, отставшееся до новой стадии

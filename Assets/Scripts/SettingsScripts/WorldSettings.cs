@@ -10,6 +10,7 @@ public struct WorldSettings
     public int StartPoints; // Кол-во очков в начале игры
     public int VirusCountScore; // Сколько очков поступает в новую стадию, за кол-во живых вирусов
     public int TimeUntilNextStage; // Время до следующей стадии
+    public int FirstTemp; // Начальная температура
 
 
 }

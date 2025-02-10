@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
         GWorldStats.NumberStage = _settingsManager.NWorldSettings.FirstStage;
         GWorldStats.TimeToNextStage = _settingsManager.NWorldSettings.TimeUntilNextStage;
         GWorldStats.TimeLeft = GWorldStats.TimeToNextStage;
+        GWorldStats.CurTemp = _settingsManager.NWorldSettings.FirstTemp;
         StartCoroutine(CountdownToNextStage());
     }
 

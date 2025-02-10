@@ -236,6 +236,9 @@ public class  Virus : MonoBehaviour
         }
     } // изменение жажды
 
-
+    private void OnMouseDown()
+    {
+        GameObject.FindFirstObjectByType<Interface>().SetSelectedObject(gameObject);
+    }
 
 }
