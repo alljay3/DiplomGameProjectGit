@@ -11,7 +11,6 @@ public struct VirusAttrubutes
     public int HeatResistance;       // Сопротивление жаре
     public int MaxHealth;            // Здоровье (общее)
     public int HealthRegeneration;   // Восстановление здоровья
-    public int ReproductionCooldown; // Способность к размножению
     public int HungerResistance;     // Сопротивление голоду
     public int ThirstResistance;     // Сопротивление жажде
     public int AgeImpact;            // Влияние возраста

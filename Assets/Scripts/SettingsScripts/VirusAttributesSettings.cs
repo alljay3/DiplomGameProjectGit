@@ -10,7 +10,6 @@ public struct VirusAttributesSettings
     public AttributeRange HeatResistanceRange;// Сопротивление Жаре
     public AttributeRange MaxHealthRange; // Максимальное здоровье
     public AttributeRange HealthRegenerationRange; //Максмальная регенерация
-    public AttributeRange ReproductionCooldownRange; //Время для следущего размножения
     public AttributeRange HungerResistanceRange; //Сопротивление голоду
     public AttributeRange ThirstResistanceRange; // Сопротивление Жажаде
     public AttributeRange AgeImpactRange; // Влияние возраста на макс хп

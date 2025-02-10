@@ -166,8 +166,7 @@ public class  Virus : MonoBehaviour
         Attrubutes.ColdResistance = Random.Range(_settingsManager.NVirusAttributesSettings.ColdResistanceRange.Min, _settingsManager.NVirusAttributesSettings.ColdResistanceRange.Max);
         Attrubutes.HeatResistance = Random.Range(_settingsManager.NVirusAttributesSettings.HeatResistanceRange.Min, _settingsManager.NVirusAttributesSettings.HeatResistanceRange.Max);
         Attrubutes.MaxHealth = Random.Range(_settingsManager.NVirusAttributesSettings.MaxHealthRange.Min, _settingsManager.NVirusAttributesSettings.MaxHealthRange.Max);
-        Attrubutes.HealthRegeneration = Random.Range(_settingsManager.NVirusAttributesSettings.HealthRegenerationRange.Min, _settingsManager.NVirusAttributesSettings.HealthRegenerationRange.Max);
-        Attrubutes.ReproductionCooldown = Random.Range(_settingsManager.NVirusAttributesSettings.ReproductionCooldownRange.Min, _settingsManager.NVirusAttributesSettings.ReproductionCooldownRange.Max);
+        Attrubutes.HealthRegeneration = Random.Range(_settingsManager.NVirusAttributesSettings.HealthRegenerationRange.Min, _settingsManager.NVirusAttributesSettings.HealthRegenerationRange.Max);       
         Attrubutes.HungerResistance = Random.Range(_settingsManager.NVirusAttributesSettings.HungerResistanceRange.Min, _settingsManager.NVirusAttributesSettings.HungerResistanceRange.Max);
         Attrubutes.ThirstResistance = Random.Range(_settingsManager.NVirusAttributesSettings.ThirstResistanceRange.Min, _settingsManager.NVirusAttributesSettings.ThirstResistanceRange.Max);
         Attrubutes.AgeImpact = Random.Range(_settingsManager.NVirusAttributesSettings.AgeImpactRange.Min, _settingsManager.NVirusAttributesSettings.AgeImpactRange.Max);
@@ -192,7 +191,6 @@ public class  Virus : MonoBehaviour
         Stats.CurrentColdResistance = Attrubutes.ColdResistance;
         Stats.CurrentHeatResistance = Attrubutes.HeatResistance;
         Stats.CurrentHealthRegeneration = Attrubutes.HealthRegeneration;
-        Stats.CurrentReproductionCooldown = Attrubutes.ReproductionCooldown;
         Stats.CurrentHungerResistance = Attrubutes.HungerResistance;
         Stats.CurrentThirstResistance = Attrubutes.ThirstResistance;
         Stats.CurrentAgeImpact = Attrubutes.AgeImpact;
