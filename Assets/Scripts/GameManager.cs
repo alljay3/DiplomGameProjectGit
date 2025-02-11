@@ -42,5 +42,6 @@ public class GameManager : MonoBehaviour
         Virus[] viruses = FindObjectsByType<Virus>(FindObjectsSortMode.None);
         foreach (var virus in viruses)
             virus.NextStage();
+        GWorldStats.Points += viruses.Length * _settingsManager.NWorldSettings.VirusCountScore;
     }
 }
