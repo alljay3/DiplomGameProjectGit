@@ -52,12 +52,12 @@ public class BerryBush : MonoBehaviour
             MaxFood = 0;
     }
 
-    public void DropCurFood()
+    public void DropCurFood() // Устанавливает текущее количество еды в 0.
     {
         CurrentFood = 0;
     }
 
-    public int EatFromBush(int countEat)
+    public int EatFromBush(int countEat) // Позволяет "съесть" определённое количество еды из куста.
     {
         if (countEat > CurrentFood)
         {
@@ -67,7 +67,7 @@ public class BerryBush : MonoBehaviour
         return countEat;
     }
 
-    IEnumerator RefillFoodOverTime()
+    IEnumerator RefillFoodOverTime() // Восстанавливает еду в кусте с течением времени.
     {
         while (true)
         {
