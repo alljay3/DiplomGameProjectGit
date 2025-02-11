@@ -33,9 +33,10 @@ public class UIButtons : MonoBehaviour
 
     public void UpTempButton(Image button)
     {
-        if (!_tempUpEnabled && !_tempDownEnabled && !_upTempCoroutineStart && !_downTempCoroutineStart)
+        if (!_tempUpEnabled && !_upTempCoroutineStart)
         {
             _tempUpEnabled = true;
+            _tempDownEnabled = false;
             _stopUpTempButtonColor = button.color;
             StartCoroutine(UpTempCoroutine(button));
         }
@@ -48,9 +49,10 @@ public class UIButtons : MonoBehaviour
 
     public void DownTempButton(Image button) 
     {
-        if (!_tempUpEnabled && !_tempDownEnabled && !_downTempCoroutineStart && !_upTempCoroutineStart)
+        if (!_tempDownEnabled && !_downTempCoroutineStart)
         {
             _tempDownEnabled = true;
+            _tempUpEnabled = false;
             _stopDownTempButtonColor = button.color;
             StartCoroutine(DownTempCoroutine(button));
         }
