@@ -1314,7 +1314,7 @@ MonoBehaviour:
     StartPoints: 10
     VirusCountScore: 5
     TimeUntilNextStage: 15
-    FirstTemp: 24
+    FirstTemp: 34
     CostUpTemp: 1
     CostDownTemp: 1
     CostSuperUpTemp: 20
@@ -1328,29 +1328,29 @@ MonoBehaviour:
     SuperUpTempAmount: 15
     SuperDownTempAmount: 15
   NVirusSettings:
-    DefaultVirusTempDmg: 5
-    DefaultVirusHungerDmg: 5
-    DefaultVirusThirstDmg: 5
+    DefaultVirusTempDmg: 50
+    DefaultVirusHungerDmg: 100
+    DefaultVirusThirstDmg: 100
     DefaultTimeTakeDmg: 1
-    DefaultScaleTempDmg: 1
+    DefaultScaleTempDmg: 0.5
     HungerDepletionSpeed: 0.5
     HungerDepletionAmount: 1
     EatDepletionSpeed: 0.1
     EatDepletionAmount: 5
-    EatThreshold: 30
+    EatThreshold: 60
     waterDepletionSpeed: 0.5
     waterDepletionAmount: 1
     DrinkDepletionSpeed: 0.01
     DrinkDepletionAmount: 1
-    DrinkThreshold: 30
-    MinFoodToEat: 30
-    MinWaterToDrink: 30
+    DrinkThreshold: 60
+    MinFoodToEat: 20
+    MinWaterToDrink: 20
   NVirusStatsSettings:
     DefaultMaxHunger: 100
     DefaultMaxThirst: 100
     DefaultStartHunger: 35
     DefaultStartThirst: 40
-    DefaultVirusHp: 1000
+    DefaultVirusHp: 5000
     DefaultMoveSpeed: 0.5
     DefaultAge: 0
   NVirusAttributesSettings:
@@ -1379,7 +1379,7 @@ MonoBehaviour:
       Min: 1
       Max: 5
     ComfortTemperatureRange:
-      Min: 30
+      Min: 33
       Max: 35
     DefaultMaxHealthScale: 10
     DefaultMoveSpeedScale: 0.1
