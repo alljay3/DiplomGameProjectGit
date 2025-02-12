@@ -122,7 +122,7 @@ public class UIButtons : MonoBehaviour
             _downTempCoroutineStart = true;
             button.color = _startDownTempButtonColor;
             _gameManager.GWorldStats.Points -= _settingsManager.NWorldSettings.CostDownTemp;
-            _environmentManager.UpTemp();
+            _environmentManager.DownTemp();
             yield return new WaitForSeconds(_settingsManager.NWorldSettings.DownTempTime);
         }
         button.color = _stopDownTempButtonColor;

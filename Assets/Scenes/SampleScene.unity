@@ -1332,7 +1332,8 @@ MonoBehaviour:
     DefaultVirusHungerDmg: 100
     DefaultVirusThirstDmg: 100
     DefaultTimeTakeDmg: 1
-    DefaultScaleTempDmg: 0.5
+    DefaultHealthRegeneration: 10
+    DefaultScaleTempDmg: 10
     HungerDepletionSpeed: 0.5
     HungerDepletionAmount: 1
     EatDepletionSpeed: 0.1

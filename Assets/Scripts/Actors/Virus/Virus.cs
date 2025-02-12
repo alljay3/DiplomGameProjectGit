@@ -30,6 +30,7 @@ public class  Virus : MonoBehaviour
     private float _lastDrinkTime = 0f;
     private float _lastEatTime = 0f;
 
+
     public void Start()
     {
         _settingsManager = GameObject.FindFirstObjectByType<SettingsManager>();
@@ -85,6 +86,8 @@ public class  Virus : MonoBehaviour
         }
         if (NearestWaterSource != null)
         {
+            if (Vector2.Distance(transform.position, NearestWaterSource.transform.position) < 0.1f)
+                Task = VirusTask.Drink;
             MoveTowards(NearestWaterSource.transform.position);
         }
 
@@ -105,6 +108,8 @@ public class  Virus : MonoBehaviour
         }
         if (NearestBerryBush != null)
         {
+            if (Vector2.Distance(transform.position, NearestBerryBush.transform.position) < 0.1f)
+                Task = VirusTask.Eat;
             MoveTowards(NearestBerryBush.transform.position);
         }
     }
@@ -123,7 +128,7 @@ public class  Virus : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {       
-        if ((Task == VirusTask.Thirst || Task == VirusTask.Drink) && collision.gameObject.TryGetComponent<WaterSource>(out WaterSource source))
+        if (Task == VirusTask.Drink && collision.gameObject.TryGetComponent<WaterSource>(out WaterSource source))
         {
             Task = VirusTask.Drink;
             if (Time.time - _lastDrinkTime >= _settingsManager.NVirusSettings.DrinkDepletionSpeed)
@@ -143,7 +148,7 @@ public class  Virus : MonoBehaviour
             }
         }
 
-        if ((Task == VirusTask.Hunger || Task == VirusTask.Eat) && collision.gameObject.TryGetComponent<BerryBush>(out BerryBush bush))
+        if (Task == VirusTask.Eat && collision.gameObject.TryGetComponent<BerryBush>(out BerryBush bush))
         {
             Task = VirusTask.Eat;
             if (Time.time - _lastEatTime >= _settingsManager.NVirusSettings.EatDepletionSpeed)
@@ -209,7 +214,12 @@ public class  Virus : MonoBehaviour
                 damage += thirstDmg;
         }
 
+        damage -= _settingsManager.NVirusSettings.DefaultHealthRegeneration * Stats.CurrentHealthRegeneration;
+
         Stats.CurrentHealth -= damage;
+
+        if (Stats.CurrentHealth > Stats.CurrentMaxHealth)
+            Stats.CurrentHealth = Stats.CurrentMaxHealth;
 
     }
 
