@@ -26,15 +26,19 @@ public class  Virus : MonoBehaviour
     public VirusTask Task;
 
     private SettingsManager _settingsManager;
+    private GameManager _gameManager;
     private float _lastDrinkTime = 0f;
     private float _lastEatTime = 0f;
 
     public void Start()
     {
+        _settingsManager = GameObject.FindFirstObjectByType<SettingsManager>();
+        _gameManager = GameObject.FindFirstObjectByType<GameManager>();
         FirstStart(); // Нужно вызывать только если особь из первого поколения
         InitStats();
         StartCoroutine(ChangeHunger());
         StartCoroutine(ChangeThirst());
+        StartCoroutine(TimeTakeDmgCoroutine());
         Task = VirusTask.Hold;
     } 
 
@@ -162,7 +166,6 @@ public class  Virus : MonoBehaviour
 
     public void FirstStart() // Вызывается, если особи первые в игровом мире
     {
-        _settingsManager = GameObject.FindFirstObjectByType<SettingsManager>();
         Attrubutes.ColdResistance = Random.Range(_settingsManager.NVirusAttributesSettings.ColdResistanceRange.Min, _settingsManager.NVirusAttributesSettings.ColdResistanceRange.Max);
         Attrubutes.HeatResistance = Random.Range(_settingsManager.NVirusAttributesSettings.HeatResistanceRange.Min, _settingsManager.NVirusAttributesSettings.HeatResistanceRange.Max);
         Attrubutes.MaxHealth = Random.Range(_settingsManager.NVirusAttributesSettings.MaxHealthRange.Min, _settingsManager.NVirusAttributesSettings.MaxHealthRange.Max);
@@ -176,8 +179,39 @@ public class  Virus : MonoBehaviour
 
     public void TakeDmg()
     {
+        int damage = 0;
+        int temperatureDifference = Stats.CurrentComfortTemperature - _gameManager.GWorldStats.CurTemp;
+        if (temperatureDifference < 0) // Урон от теплой температуры
+        {
+            int hitTemperatureDifference = (temperatureDifference + Stats.CurrentHeatResistance) * -1;
+            Debug.Log(hitTemperatureDifference);
+            if (hitTemperatureDifference > 0)
+                damage += _settingsManager.NVirusSettings.DefaultVirusTempDmg + (int) (hitTemperatureDifference * _settingsManager.NVirusSettings.DefaultScaleTempDmg);
+        }
+        if (temperatureDifference > 0)
+        {
+            int coldTemperatureDifference = temperatureDifference - Stats.CurrentColdResistance;
+            Debug.Log(coldTemperatureDifference);
+            if (coldTemperatureDifference > 0) // Урон от холодной температуры
+                damage += _settingsManager.NVirusSettings.DefaultVirusTempDmg + (int)(coldTemperatureDifference * _settingsManager.NVirusSettings.DefaultScaleTempDmg);
+        }
 
-    } // Получить урон
+        if (Stats.CurrentHunger == 0)
+        {
+            int hungerDmg = _settingsManager.NVirusSettings.DefaultVirusHungerDmg - Stats.CurrentHungerResistance;
+            if (hungerDmg > 0)
+                damage += hungerDmg;
+        }
+        if (Stats.CurrentThirst == 0)
+        {
+            int thirstDmg = _settingsManager.NVirusSettings.DefaultVirusThirstDmg - Stats.CurrentThirst;
+            if (thirstDmg > 0)
+                damage += thirstDmg;
+        }
+
+        Stats.CurrentHealth -= damage;
+
+    }
 
     public void InitStats()// Инициализация статов
     {
@@ -204,6 +238,8 @@ public class  Virus : MonoBehaviour
     private void ChangeMaxHealth()
     {
         Stats.CurrentMaxHealth -= (_settingsManager.NVirusAttributesSettings.DefaultMaxAttribute - Attrubutes.AgeImpact);
+        if (Stats.CurrentMaxHealth < Stats.CurrentHealth)
+            Stats.CurrentHealth = Stats.CurrentMaxHealth;
     } // Поменять максимальное hp
 
     public void NextStage()
@@ -235,6 +271,16 @@ public class  Virus : MonoBehaviour
                 Stats.CurrentThirst = 0;
         }
     } // изменение жажды
+
+
+    IEnumerator TimeTakeDmgCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(_settingsManager.NVirusSettings.DefaultTimeTakeDmg);
+            TakeDmg();
+        }
+    }
 
     private void OnMouseDown()
     {

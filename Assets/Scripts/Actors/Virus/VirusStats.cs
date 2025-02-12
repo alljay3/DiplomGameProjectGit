@@ -17,7 +17,6 @@ public struct VirusStats
     public int CurrentColdResistance;       // Сопротивление холоду
     public int CurrentHeatResistance;       // Сопротивление жаре
     public int CurrentHealthRegeneration;   // Восстановление здоровья
-    public int CurrentReproductionCooldown; // Способность к размножению
     public int CurrentHungerResistance;     // Сопротивление голоду
     public int CurrentThirstResistance;     // Сопротивление жажде
     public int CurrentAgeImpact;            // Влияние возраста

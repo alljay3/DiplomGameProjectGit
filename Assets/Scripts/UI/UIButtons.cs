@@ -110,6 +110,7 @@ public class UIButtons : MonoBehaviour
             yield return new WaitForSeconds(_settingsManager.NWorldSettings.UpTempTime);
         }
         button.color = _stopUpTempButtonColor;
+        _tempUpEnabled = false;
         _upTempCoroutineStart = false;
     }
 
@@ -125,6 +126,7 @@ public class UIButtons : MonoBehaviour
             yield return new WaitForSeconds(_settingsManager.NWorldSettings.DownTempTime);
         }
         button.color = _stopDownTempButtonColor;
+        _tempDownEnabled = false;
         _downTempCoroutineStart = false;
     }
 
