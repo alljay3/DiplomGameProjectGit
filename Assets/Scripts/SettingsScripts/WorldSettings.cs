@@ -6,6 +6,9 @@ using UnityEngine;
 /// </summary>
 public struct WorldSettings
 {
+    public int FirstVirusCount; // Кол-во начальных вирусов
+    public int FirstBerryBushCount; // Кол-во начальных вирусов
+    public int FirstWaterSourceCount; // Кол-во начальных вирусов
     public int FirstStage; // Номер первой стадии
     public int StartPoints; // Кол-во очков в начале игры
     public int VirusCountScore; // Сколько очков поступает в новую стадию, за кол-во живых вирусов
@@ -23,6 +26,10 @@ public struct WorldSettings
     public int DownTempTime; // Время понижения температуры
     public int SuperUpTempAmount; // Кол-во резкого повышения температуры
     public int SuperDownTempAmount; //Кол-во резкого понижения температуры
+    public float GameFieldMinX;
+    public float GameFieldMaxX;
+    public float GameFieldMinY;
+    public float GameFieldMaxY;
 
 
 }

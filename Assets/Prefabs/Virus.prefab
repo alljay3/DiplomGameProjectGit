@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.6247281, y: -1.2192261, z: 0}
-  m_LocalScale: {x: 0.71716, y: 0.71716, z: 0.71716}
+  m_LocalScale: {x: 0.5341045, y: 0.5341045, z: 0.5341045}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4419216404865291913}
@@ -58,7 +58,6 @@ MonoBehaviour:
     CurrentColdResistance: 0
     CurrentHeatResistance: 0
     CurrentHealthRegeneration: 0
-    CurrentReproductionCooldown: 0
     CurrentHungerResistance: 0
     CurrentThirstResistance: 0
     CurrentAgeImpact: 0
@@ -69,13 +68,13 @@ MonoBehaviour:
     HeatResistance: 0
     MaxHealth: 0
     HealthRegeneration: 0
-    ReproductionCooldown: 0
     HungerResistance: 0
     ThirstResistance: 0
     AgeImpact: 0
     MovementSpeed: 0
     ComfortTemperature: 0
   Task: 2
+  isFirtsGeneration: 1
 --- !u!61 &4576481558976321941
 BoxCollider2D:
   m_ObjectHideFlags: 0

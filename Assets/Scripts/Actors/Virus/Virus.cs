@@ -24,24 +24,35 @@ public class  Virus : MonoBehaviour
     public VirusAttrubutes Attrubutes; // Атрибуты вируса
 
     public VirusTask Task;
+    public bool isFirtsGeneration = true;
 
     private SettingsManager _settingsManager;
     private GameManager _gameManager;
     private float _lastDrinkTime = 0f;
     private float _lastEatTime = 0f;
 
-
-    public void Start()
+    public void Awake()
     {
         _settingsManager = GameObject.FindFirstObjectByType<SettingsManager>();
         _gameManager = GameObject.FindFirstObjectByType<GameManager>();
-        FirstStart(); // Нужно вызывать только если особь из первого поколения
+    }
+
+    public void Start()
+    {
+        if (isFirtsGeneration)
+            FirstStart(); // Нужно вызывать только если особь из первого поколения
         InitStats();
         StartCoroutine(ChangeHunger());
         StartCoroutine(ChangeThirst());
         StartCoroutine(TimeTakeDmgCoroutine());
         Task = VirusTask.Hold;
-    } 
+    }
+    
+    public void SetParrentAttribute(VirusAttrubutes parrentAttrubutes)
+    {
+        isFirtsGeneration = false;
+        Attrubutes = parrentAttrubutes;
+    }
 
     public void FixedUpdate()
     {
@@ -220,7 +231,17 @@ public class  Virus : MonoBehaviour
 
         if (Stats.CurrentHealth > Stats.CurrentMaxHealth)
             Stats.CurrentHealth = Stats.CurrentMaxHealth;
+        
+        if (Stats.CurrentHealth <= 0)
+        {
+            Die();
+        }
 
+    }
+
+    void Die()
+    {
+        Destroy(gameObject);
     }
 
     public void InitStats()// Инициализация статов
