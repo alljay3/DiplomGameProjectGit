@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class EvoAlgorithm : MonoBehaviour
+public abstract class IEvoAlgorithm : MonoBehaviour
 {
     public abstract void BeginReproduction();
 }

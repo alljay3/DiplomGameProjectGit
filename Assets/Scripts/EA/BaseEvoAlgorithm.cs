@@ -3,7 +3,7 @@ using System.Linq;
 using NUnit.Framework;
 using UnityEngine;
 
-public class BaseEvoAlgorithm : EvoAlgorithm
+public class BaseEvoAlgorithm : IEvoAlgorithm
 {
     [SerializeField] Vector3 childSpawnByParrent = new Vector3(0,1,0);
     public override void BeginReproduction()

@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public Virus VirusPref;
     public BerryBush BerryBushPref;
     public WaterSource WaterSourcePref;
-    public EvoAlgorithm CurEvoAlgorithm;
+    public IEvoAlgorithm CurEvoAlgorithm;
 
     private SettingsManager _settingsManager;
 

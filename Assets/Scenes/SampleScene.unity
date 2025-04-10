@@ -1154,28 +1154,28 @@ MonoBehaviour:
   NVirusAttributesSettings:
     ColdResistanceRange:
       Min: 1
-      Max: 100
+      Max: 20
     HeatResistanceRange:
       Min: 1
-      Max: 100
+      Max: 20
     MaxHealthRange:
       Min: 1
-      Max: 100
+      Max: 20
     HealthRegenerationRange:
       Min: 1
-      Max: 100
+      Max: 20
     HungerResistanceRange:
       Min: 1
-      Max: 100
+      Max: 20
     ThirstResistanceRange:
       Min: 1
-      Max: 5
+      Max: 20
     AgeImpactRange:
       Min: 1
-      Max: 100
+      Max: 20
     MovementSpeedRange:
       Min: 1
-      Max: 100
+      Max: 20
     ComfortTemperatureRange:
       Min: 33
       Max: 35
