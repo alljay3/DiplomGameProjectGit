@@ -36,15 +36,15 @@ public class BaseEvoAlgorithm : IEvoAlgorithm
         VirusAttrubutes offspringAttributes = new VirusAttrubutes();
 
         // Устанавливаем атрибуты потомка на основе атрибутов родителей
-        offspringAttributes.ColdResistance = (int)(virus1.Attrubutes.ColdResistance + virus2.Attrubutes.ColdResistance) / 2;
-        offspringAttributes.HeatResistance = (int)(virus1.Attrubutes.HeatResistance + virus2.Attrubutes.HeatResistance) / 2;
-        offspringAttributes.MaxHealth = (int)(virus1.Attrubutes.MaxHealth + virus2.Attrubutes.MaxHealth) / 2;
-        offspringAttributes.HealthRegeneration = (int)(virus1.Attrubutes.HealthRegeneration + virus2.Attrubutes.HealthRegeneration) / 2;
-        offspringAttributes.HungerResistance = (int)(virus1.Attrubutes.HungerResistance + virus2.Attrubutes.HungerResistance) / 2;
-        offspringAttributes.ThirstResistance = (int)(virus1.Attrubutes.ThirstResistance + virus2.Attrubutes.ThirstResistance) / 2;
-        offspringAttributes.AgeImpact = (int)(virus1.Attrubutes.AgeImpact + virus2.Attrubutes.AgeImpact) / 2;
-        offspringAttributes.MovementSpeed = (int)(virus1.Attrubutes.MovementSpeed + virus2.Attrubutes.MovementSpeed) / 2;
-        offspringAttributes.ComfortTemperature = (int)(virus1.Attrubutes.ComfortTemperature + virus2.Attrubutes.ComfortTemperature) / 2;
+        offspringAttributes.ColdResistance = (int)(virus1.Attributes.ColdResistance + virus2.Attributes.ColdResistance) / 2;
+        offspringAttributes.HeatResistance = (int)(virus1.Attributes.HeatResistance + virus2.Attributes.HeatResistance) / 2;
+        offspringAttributes.MaxHealth = (int)(virus1.Attributes.MaxHealth + virus2.Attributes.MaxHealth) / 2;
+        offspringAttributes.HealthRegeneration = (int)(virus1.Attributes.HealthRegeneration + virus2.Attributes.HealthRegeneration) / 2;
+        offspringAttributes.HungerResistance = (int)(virus1.Attributes.HungerResistance + virus2.Attributes.HungerResistance) / 2;
+        offspringAttributes.ThirstResistance = (int)(virus1.Attributes.ThirstResistance + virus2.Attributes.ThirstResistance) / 2;
+        offspringAttributes.AgeImpact = (int)(virus1.Attributes.AgeImpact + virus2.Attributes.AgeImpact) / 2;
+        offspringAttributes.MovementSpeed = (int)(virus1.Attributes.MovementSpeed + virus2.Attributes.MovementSpeed) / 2;
+        offspringAttributes.ComfortTemperature = (int)(virus1.Attributes.ComfortTemperature + virus2.Attributes.ComfortTemperature) / 2;
 
         GameObject.Instantiate(virus1, virus1.transform.position + childSpawnByParrent, Quaternion.identity);
         virus1.SetParrentAttribute(offspringAttributes);

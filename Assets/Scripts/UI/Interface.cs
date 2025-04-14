@@ -69,15 +69,15 @@ public class Interface : MonoBehaviour
     private void ActiveVirusPanel()
     {
         VirusPanel.SetActive(true);
-        ColdResistance.text = _selectedObject.GetComponent<Virus>().Attrubutes.ColdResistance.ToString();
-        HeatResistance.text = _selectedObject.GetComponent<Virus>().Attrubutes.HeatResistance.ToString();
-        MaxHealth.text = _selectedObject.GetComponent<Virus>().Attrubutes.MaxHealth.ToString();
-        HealthRegeneration.text = _selectedObject.GetComponent<Virus>().Attrubutes.HealthRegeneration.ToString();
-        HungerResistance.text = _selectedObject.GetComponent<Virus>().Attrubutes.HungerResistance.ToString();
-        ThirstResistance.text = _selectedObject.GetComponent<Virus>().Attrubutes.ThirstResistance.ToString();
-        AgeImpact.text = _selectedObject.GetComponent<Virus>().Attrubutes.AgeImpact.ToString();
-        MovementSpeed.text = _selectedObject.GetComponent<Virus>().Attrubutes.MovementSpeed.ToString();
-        ComfortTemperature.text = _selectedObject.GetComponent<Virus>().Attrubutes.ComfortTemperature.ToString();
+        ColdResistance.text = _selectedObject.GetComponent<Virus>().Attributes.ColdResistance.ToString();
+        HeatResistance.text = _selectedObject.GetComponent<Virus>().Attributes.HeatResistance.ToString();
+        MaxHealth.text = _selectedObject.GetComponent<Virus>().Attributes.MaxHealth.ToString();
+        HealthRegeneration.text = _selectedObject.GetComponent<Virus>().Attributes.HealthRegeneration.ToString();
+        HungerResistance.text = _selectedObject.GetComponent<Virus>().Attributes.HungerResistance.ToString();
+        ThirstResistance.text = _selectedObject.GetComponent<Virus>().Attributes.ThirstResistance.ToString();
+        AgeImpact.text = _selectedObject.GetComponent<Virus>().Attributes.AgeImpact.ToString();
+        MovementSpeed.text = _selectedObject.GetComponent<Virus>().Attributes.MovementSpeed.ToString();
+        ComfortTemperature.text = _selectedObject.GetComponent<Virus>().Attributes.ComfortTemperature.ToString();
         CurrentHealth.text = _selectedObject.GetComponent<Virus>().Stats.CurrentHealth.ToString()+ "/" + _selectedObject.GetComponent<Virus>().Stats.CurrentMaxHealth.ToString();
         CurrentHunger.text = _selectedObject.GetComponent<Virus>().Stats.CurrentHunger.ToString() + "/" + _settingsManager.NVirusStatsSettings.DefaultMaxHunger.ToString();
         CurrentThirst.text = _selectedObject.GetComponent<Virus>().Stats.CurrentThirst.ToString() + "/" +  _settingsManager.NVirusStatsSettings.DefaultMaxThirst.ToString();

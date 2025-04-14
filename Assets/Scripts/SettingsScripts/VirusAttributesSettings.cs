@@ -16,10 +16,14 @@ public struct VirusAttributesSettings
     public AttributeRange MovementSpeedRange; // Скорость
     public AttributeRange ComfortTemperatureRange; // Комфортная температура
 
+    public int DefaultHungerResistanceScale;  // На сколько влияет сопротивление голоду
+    public int DefaultThirstResistanceScale; // На сколько влияет сопротивление жажде
     public int DefaultMaxHealthScale; // На сколько влияет скорость передвижения
     public float DefaultMoveSpeedScale; // На сколько влияет скорость передвижения
 
 
     public int DefaultMinAttribute; // Минимальный показатель аттрибутов
     public int DefaultMaxAttribute; // Максимальный показалеть аттрибутов
+
+
 }

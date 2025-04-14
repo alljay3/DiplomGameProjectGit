@@ -21,7 +21,7 @@ public enum VirusTask
 public class  Virus : MonoBehaviour
 {
     public VirusStats Stats; // Статусы вируса
-    public VirusAttrubutes Attrubutes; // Атрибуты вируса
+    public VirusAttrubutes Attributes; // Атрибуты вируса
 
     public VirusTask Task;
     public bool isFirtsGeneration = true;
@@ -51,7 +51,7 @@ public class  Virus : MonoBehaviour
     public void SetParrentAttribute(VirusAttrubutes parrentAttrubutes)
     {
         isFirtsGeneration = false;
-        Attrubutes = parrentAttrubutes;
+        Attributes = parrentAttrubutes;
     }
 
     public void FixedUpdate()
@@ -81,6 +81,23 @@ public class  Virus : MonoBehaviour
         if (Task == VirusTask.Reproduce)
             GoReproduce();
     }
+
+    //public void GoHold()
+    //{
+    //    if (_isHoldChange == true || Vector2.Distance(_wanderTarget, transform.position) <= 0.1f)
+    //    {
+    //        float wanderRadius = 2.0f;
+    //        Vector2 randomDirection = Random.insideUnitCircle * wanderRadius;
+    //        Vector2 randomPoint = (Vector2)transform.position + randomDirection;
+
+    //        _wanderTarget = new Vector2(
+    //            Mathf.Clamp(randomPoint.x, _settingsManager.NWorldSettings.GameFieldMinX, _settingsManager.NWorldSettings.GameFieldMaxX),
+    //            Mathf.Clamp(randomPoint.y, _settingsManager.NWorldSettings.GameFieldMinY, _settingsManager.NWorldSettings.GameFieldMaxY)
+    //        );
+    //    }
+    //    _isHoldChange = false;
+    //    MoveTowards(_wanderTarget);
+    //}
 
     private void GoDrink()
     {
@@ -182,15 +199,15 @@ public class  Virus : MonoBehaviour
 
     public void FirstStart() // Вызывается, если особи первые в игровом мире
     {
-        Attrubutes.ColdResistance = Random.Range(_settingsManager.NVirusAttributesSettings.ColdResistanceRange.Min, _settingsManager.NVirusAttributesSettings.ColdResistanceRange.Max);
-        Attrubutes.HeatResistance = Random.Range(_settingsManager.NVirusAttributesSettings.HeatResistanceRange.Min, _settingsManager.NVirusAttributesSettings.HeatResistanceRange.Max);
-        Attrubutes.MaxHealth = Random.Range(_settingsManager.NVirusAttributesSettings.MaxHealthRange.Min, _settingsManager.NVirusAttributesSettings.MaxHealthRange.Max);
-        Attrubutes.HealthRegeneration = Random.Range(_settingsManager.NVirusAttributesSettings.HealthRegenerationRange.Min, _settingsManager.NVirusAttributesSettings.HealthRegenerationRange.Max);       
-        Attrubutes.HungerResistance = Random.Range(_settingsManager.NVirusAttributesSettings.HungerResistanceRange.Min, _settingsManager.NVirusAttributesSettings.HungerResistanceRange.Max);
-        Attrubutes.ThirstResistance = Random.Range(_settingsManager.NVirusAttributesSettings.ThirstResistanceRange.Min, _settingsManager.NVirusAttributesSettings.ThirstResistanceRange.Max);
-        Attrubutes.AgeImpact = Random.Range(_settingsManager.NVirusAttributesSettings.AgeImpactRange.Min, _settingsManager.NVirusAttributesSettings.AgeImpactRange.Max);
-        Attrubutes.MovementSpeed = Random.Range(_settingsManager.NVirusAttributesSettings.MovementSpeedRange.Min, _settingsManager.NVirusAttributesSettings.MovementSpeedRange.Max);
-        Attrubutes.ComfortTemperature = Random.Range(_settingsManager.NVirusAttributesSettings.ComfortTemperatureRange.Min, _settingsManager.NVirusAttributesSettings.ComfortTemperatureRange.Max);
+        Attributes.ColdResistance = Random.Range(_settingsManager.NVirusAttributesSettings.ColdResistanceRange.Min, _settingsManager.NVirusAttributesSettings.ColdResistanceRange.Max);
+        Attributes.HeatResistance = Random.Range(_settingsManager.NVirusAttributesSettings.HeatResistanceRange.Min, _settingsManager.NVirusAttributesSettings.HeatResistanceRange.Max);
+        Attributes.MaxHealth = Random.Range(_settingsManager.NVirusAttributesSettings.MaxHealthRange.Min, _settingsManager.NVirusAttributesSettings.MaxHealthRange.Max);
+        Attributes.HealthRegeneration = Random.Range(_settingsManager.NVirusAttributesSettings.HealthRegenerationRange.Min, _settingsManager.NVirusAttributesSettings.HealthRegenerationRange.Max);       
+        Attributes.HungerResistance = Random.Range(_settingsManager.NVirusAttributesSettings.HungerResistanceRange.Min, _settingsManager.NVirusAttributesSettings.HungerResistanceRange.Max);
+        Attributes.ThirstResistance = Random.Range(_settingsManager.NVirusAttributesSettings.ThirstResistanceRange.Min, _settingsManager.NVirusAttributesSettings.ThirstResistanceRange.Max);
+        Attributes.AgeImpact = Random.Range(_settingsManager.NVirusAttributesSettings.AgeImpactRange.Min, _settingsManager.NVirusAttributesSettings.AgeImpactRange.Max);
+        Attributes.MovementSpeed = Random.Range(_settingsManager.NVirusAttributesSettings.MovementSpeedRange.Min, _settingsManager.NVirusAttributesSettings.MovementSpeedRange.Max);
+        Attributes.ComfortTemperature = Random.Range(_settingsManager.NVirusAttributesSettings.ComfortTemperatureRange.Min, _settingsManager.NVirusAttributesSettings.ComfortTemperatureRange.Max);
     }
 
     public void TakeDmg()
@@ -200,7 +217,6 @@ public class  Virus : MonoBehaviour
         if (temperatureDifference < 0) // Урон от теплой температуры
         {
             int hitTemperatureDifference = (temperatureDifference + Stats.CurrentHeatResistance) * -1;
-            Debug.Log(hitTemperatureDifference);
             if (hitTemperatureDifference > 0)
                 damage += _settingsManager.NVirusSettings.DefaultVirusTempDmg + (int) (hitTemperatureDifference * _settingsManager.NVirusSettings.DefaultScaleTempDmg);
         }
@@ -214,13 +230,13 @@ public class  Virus : MonoBehaviour
 
         if (Stats.CurrentHunger == 0)
         {
-            int hungerDmg = _settingsManager.NVirusSettings.DefaultVirusHungerDmg - Stats.CurrentHungerResistance;
+            int hungerDmg = _settingsManager.NVirusSettings.DefaultVirusHungerDmg - Stats.CurrentHungerResistance * _settingsManager.NVirusAttributesSettings.DefaultHungerResistanceScale;
             if (hungerDmg > 0)
                 damage += hungerDmg;
         }
         if (Stats.CurrentThirst == 0)
         {
-            int thirstDmg = _settingsManager.NVirusSettings.DefaultVirusThirstDmg - Stats.CurrentThirst;
+            int thirstDmg = _settingsManager.NVirusSettings.DefaultVirusThirstDmg - Stats.CurrentThirst * _settingsManager.NVirusAttributesSettings.DefaultThirstResistanceScale;
             if (thirstDmg > 0)
                 damage += thirstDmg;
         }
@@ -251,16 +267,16 @@ public class  Virus : MonoBehaviour
         Stats.CurrentHunger = _settingsManager.NVirusStatsSettings.DefaultStartHunger;
         Stats.CurrentThirst = _settingsManager.NVirusStatsSettings.DefaultStartThirst;
         Stats.CurrentAge = _settingsManager.NVirusStatsSettings.DefaultAge;
-        Stats.CurrentMaxHealth = _settingsManager.NVirusStatsSettings.DefaultVirusHp + Attrubutes.MaxHealth * _settingsManager.NVirusAttributesSettings.DefaultMaxHealthScale;
+        Stats.CurrentMaxHealth = _settingsManager.NVirusStatsSettings.DefaultVirusHp + Attributes.MaxHealth * _settingsManager.NVirusAttributesSettings.DefaultMaxHealthScale;
         Stats.CurrentHealth = Stats.CurrentMaxHealth;
-        Stats.CurrentColdResistance = Attrubutes.ColdResistance;
-        Stats.CurrentHeatResistance = Attrubutes.HeatResistance;
-        Stats.CurrentHealthRegeneration = Attrubutes.HealthRegeneration;
-        Stats.CurrentHungerResistance = Attrubutes.HungerResistance;
-        Stats.CurrentThirstResistance = Attrubutes.ThirstResistance;
-        Stats.CurrentAgeImpact = Attrubutes.AgeImpact;
-        Stats.CurrentMovementSpeed = _settingsManager.NVirusStatsSettings.DefaultMoveSpeed + Attrubutes.MovementSpeed * _settingsManager.NVirusAttributesSettings.DefaultMoveSpeedScale;
-        Stats.CurrentComfortTemperature = Attrubutes.ComfortTemperature;
+        Stats.CurrentColdResistance = Attributes.ColdResistance;
+        Stats.CurrentHeatResistance = Attributes.HeatResistance;
+        Stats.CurrentHealthRegeneration = Attributes.HealthRegeneration;
+        Stats.CurrentHungerResistance = Attributes.HungerResistance;
+        Stats.CurrentThirstResistance = Attributes.ThirstResistance;
+        Stats.CurrentAgeImpact = Attributes.AgeImpact;
+        Stats.CurrentMovementSpeed = _settingsManager.NVirusStatsSettings.DefaultMoveSpeed + Attributes.MovementSpeed * _settingsManager.NVirusAttributesSettings.DefaultMoveSpeedScale;
+        Stats.CurrentComfortTemperature = Attributes.ComfortTemperature;
 
         for (int i = 0; i < Stats.CurrentAge;  i++)
             ChangeMaxHealth(); // *** Меняется максимальные жизни
@@ -268,7 +284,9 @@ public class  Virus : MonoBehaviour
 
     private void ChangeMaxHealth()
     {
-        Stats.CurrentMaxHealth -= (_settingsManager.NVirusAttributesSettings.DefaultMaxAttribute - Attrubutes.AgeImpact);
+        int changeHealthDiff = _settingsManager.NVirusAttributesSettings.DefaultMaxAttribute - Stats.CurrentAgeImpact;
+        if (changeHealthDiff > 0)
+            Stats.CurrentMaxHealth -= changeHealthDiff;
         if (Stats.CurrentMaxHealth < Stats.CurrentHealth)
             Stats.CurrentHealth = Stats.CurrentMaxHealth;
     } // Поменять максимальное hp
@@ -288,6 +306,8 @@ public class  Virus : MonoBehaviour
                 Stats.CurrentHunger -= _settingsManager.NVirusSettings.HungerDepletionAmount;
             if (Stats.CurrentHunger < 0)
                 Stats.CurrentHunger = 0;
+            if (Stats.CurrentHunger > Stats.MaxHunger)
+                Stats.CurrentHunger = Stats.MaxHunger;
         }
     } // Изменение голода
 
