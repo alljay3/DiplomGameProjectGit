@@ -29,12 +29,12 @@ public class ClasscicGeneticAlgorithm : IEvoAlgorithm
     {
         List<Virus> virusObjs = GameObject.FindObjectsByType<Virus>(FindObjectsSortMode.None).ToList();
         List<Virus> newViruses = virusObjs.ToList();
+        Debug.Log(newViruses.Count);
         List<float> virusFitnessResults = new List<float>();
 
-        foreach (Virus virus in virusObjs)
+        foreach (Virus virus in virusObjs) // Подсчет функции приспособленности
         {
             virusFitnessResults.Add(FitnessFunction.UseFitnessFunction(virus));
-            //Debug.Log(virusFitnessResault.Last<float>());
         }
 
         for (int i = 0; i < virusObjs.Count / 2; i++) 
@@ -117,8 +117,20 @@ public class ClasscicGeneticAlgorithm : IEvoAlgorithm
             childVirus.transform.position += childSpawnByParrent;
             virusFitnessResults.Add(FitnessFunction.UseFitnessFunction(childVirus));
             newViruses.Add(childVirus);
-            Mutation.UseMutation(newViruses.ToArray<Virus>());
+        } // Crossover
+
+
+        Mutation.UseMutation(newViruses.ToArray());
+
+        List<Virus> selectedViruses = Selection.UseSelection(newViruses.ToArray(), virusFitnessResults.ToArray()).ToList();
+        var virusesToDestroy = newViruses.Except(selectedViruses).ToList();
+
+        foreach (var virus in virusesToDestroy)
+        {
+            Destroy(virus.gameObject);
         }
+
+
 
     }
 

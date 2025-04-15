@@ -1100,20 +1100,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NWorldSettings:
-    FirstVirusCount: 8
-    FirstBerryBushCount: 6
-    FirstWaterSourceCount: 1
+    FirstVirusCount: 40
+    FirstBerryBushCount: 8
+    FirstWaterSourceCount: 2
     FirstStage: 0
-    StartPoints: 10
+    StartPoints: 100
     VirusCountScore: 1
-    TimeUntilNextStage: 10
+    TimeUntilNextStage: 5
     FirstTemp: 34
-    CostUpTemp: 5
-    CostDownTemp: 5
-    CostSuperUpTemp: 60
-    CostSuperDownTemp: 60
-    CostDropFood: 60
-    CostDropWater: 60
+    CostUpTemp: 10
+    CostDownTemp: 10
+    CostSuperUpTemp: 100
+    CostSuperDownTemp: 100
+    CostDropFood: 150
+    CostDropWater: 150
     UpTempAmount: 1
     UpTempTime: 1
     DownTempAmount: 1
@@ -1139,10 +1139,10 @@ MonoBehaviour:
     waterDepletionSpeed: 0.5
     waterDepletionAmount: 1
     DrinkDepletionSpeed: 0.01
-    DrinkDepletionAmount: 1
+    DrinkDepletionAmount: 2
     DrinkThreshold: 60
     MinFoodToEat: 20
-    MinWaterToDrink: 20
+    MinWaterToDrink: 100
   NVirusStatsSettings:
     DefaultMaxHunger: 100
     DefaultMaxThirst: 100
@@ -1181,7 +1181,7 @@ MonoBehaviour:
       Max: 35
     DefaultHungerResistanceScale: 5
     DefaultThirstResistanceScale: 5
-    DefaultMaxHealthScale: 10
+    DefaultMaxHealthScale: 100
     DefaultMoveSpeedScale: 0.1
     DefaultMinAttribute: 1
     DefaultMaxAttribute: 100
@@ -8170,37 +8170,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1779026782}
   m_CullTransparentMesh: 1
---- !u!1 &1789587434
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1789587435}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1789587435
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1789587434}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.26, y: 3.35, z: 106.95908}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1829961980
 GameObject:
   m_ObjectHideFlags: 0
@@ -9539,63 +9508,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2130973662}
   m_CullTransparentMesh: 1
---- !u!1001 &1669523810109037947
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2996176278041552679, guid: 9e18ef42f7167d54e8e0483af4c309a2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.6247281
-      objectReference: {fileID: 0}
-    - target: {fileID: 2996176278041552679, guid: 9e18ef42f7167d54e8e0483af4c309a2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.2192261
-      objectReference: {fileID: 0}
-    - target: {fileID: 2996176278041552679, guid: 9e18ef42f7167d54e8e0483af4c309a2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2996176278041552679, guid: 9e18ef42f7167d54e8e0483af4c309a2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2996176278041552679, guid: 9e18ef42f7167d54e8e0483af4c309a2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2996176278041552679, guid: 9e18ef42f7167d54e8e0483af4c309a2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2996176278041552679, guid: 9e18ef42f7167d54e8e0483af4c309a2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2996176278041552679, guid: 9e18ef42f7167d54e8e0483af4c309a2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2996176278041552679, guid: 9e18ef42f7167d54e8e0483af4c309a2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2996176278041552679, guid: 9e18ef42f7167d54e8e0483af4c309a2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3932909370823368292, guid: 9e18ef42f7167d54e8e0483af4c309a2, type: 3}
-      propertyPath: m_Name
-      value: Virus
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9e18ef42f7167d54e8e0483af4c309a2, type: 3}
 --- !u!1001 &6768174735517798789
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9612,6 +9524,10 @@ PrefabInstance:
       propertyPath: Crossover
       value: 
       objectReference: {fileID: 1281982224124553072, guid: 14cc5f167599da048975e4c73a6097a3, type: 3}
+    - target: {fileID: -3154233907282681839, guid: 01f5842376b39e54b9180d093c88f0c1, type: 3}
+      propertyPath: Selection
+      value: 
+      objectReference: {fileID: 5981137245501422476, guid: c0fc7f2ad14daaa4e8caa1aff84fcdb5, type: 3}
     - target: {fileID: -3154233907282681839, guid: 01f5842376b39e54b9180d093c88f0c1, type: 3}
       propertyPath: FitnessFunction
       value: 
@@ -9679,7 +9595,5 @@ SceneRoots:
   - {fileID: 487964155}
   - {fileID: 1851300115}
   - {fileID: 947551114}
-  - {fileID: 1789587435}
   - {fileID: 6768174735517798789}
   - {fileID: 1104553420}
-  - {fileID: 1669523810109037947}
