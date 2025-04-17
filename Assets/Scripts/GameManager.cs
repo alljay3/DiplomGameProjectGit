@@ -13,6 +13,11 @@ public class GameManager : MonoBehaviour
     public WaterSource WaterSourcePref;
     public IEvoAlgorithm CurEvoAlgorithm;
 
+    [HideInInspector] public int AllFood;
+    [HideInInspector] public int AllWater;
+    [HideInInspector] public int countWaterSources;
+    [HideInInspector] public int CountBushes;
+
     private SettingsManager _settingsManager;
 
     private void Start()
@@ -48,6 +53,22 @@ public class GameManager : MonoBehaviour
         foreach (var virus in viruses)
             virus.NextStage();
         GWorldStats.Points += viruses.Length * _settingsManager.NWorldSettings.VirusCountScore;
+
+        BerryBush[] berryBushes = FindObjectsByType<BerryBush>(FindObjectsSortMode.None);
+        WaterSource[] waterSource = FindObjectsByType<WaterSource>(FindObjectsSortMode.None);
+        AllFood = 0;
+        AllWater = 0;
+        foreach (var water in waterSource)
+        {
+            AllWater += water.CurrentWater;
+        }
+        foreach (var bush in berryBushes)
+        {
+            AllFood += bush.CurrentFood;
+        }
+        CountBushes = berryBushes.Length;
+        countWaterSources = waterSource.Length;
+
         CurEvoAlgorithm.BeginReproduction();
     }
 

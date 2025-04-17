@@ -66,9 +66,34 @@ public class  Virus : MonoBehaviour
             return;
 
         if (Stats.CurrentHunger <= _settingsManager.NVirusSettings.EatThreshold)
-            Task = VirusTask.Hunger;
+        {
+            BerryBush[] BerryBushes = GameObject.FindObjectsByType<BerryBush>(FindObjectsSortMode.None);
+            bool isReadyBushes = false;
+            foreach (BerryBush bush in BerryBushes)
+            {
+                if (_settingsManager.NVirusSettings.MinFoodToEat < bush.CurrentFood)
+                {
+                    isReadyBushes = true;
+                }
+            }
+            if (isReadyBushes)
+                Task = VirusTask.Hunger;
+
+        }
         if (Stats.CurrentThirst <= _settingsManager.NVirusSettings.DrinkThreshold)
-            Task = VirusTask.Thirst;
+        {
+            WaterSource[] WaterSources = GameObject.FindObjectsByType<WaterSource>(FindObjectsSortMode.None);
+            bool isReadyWaters = false;
+            foreach (WaterSource source in WaterSources)
+            {
+                if (_settingsManager.NVirusSettings.MinWaterToDrink < source.CurrentWater)
+                {
+                    isReadyWaters = true;
+                }
+            }
+            if (isReadyWaters)
+                Task = VirusTask.Thirst;
+        }
     }
 
 
@@ -76,6 +101,7 @@ public class  Virus : MonoBehaviour
     {
         if (Task == VirusTask.Thirst)
         {
+            GoDrink();
             WaterSource[] WaterSources = GameObject.FindObjectsByType<WaterSource>(FindObjectsSortMode.None);
             bool isReadyWaters = false;
             foreach (WaterSource source in WaterSources)
@@ -364,6 +390,7 @@ public class  Virus : MonoBehaviour
     {
         GameObject.FindFirstObjectByType<Interface>().SetSelectedObject(gameObject);
     }
+    
 
 
 

@@ -1100,26 +1100,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NWorldSettings:
-    FirstVirusCount: 40
+    FirstVirusCount: 50
     FirstBerryBushCount: 8
     FirstWaterSourceCount: 2
     FirstStage: 0
-    StartPoints: 100
+    StartPoints: 300
     VirusCountScore: 1
-    TimeUntilNextStage: 5
+    TimeUntilNextStage: 2
     FirstTemp: 34
-    CostUpTemp: 10
-    CostDownTemp: 10
-    CostSuperUpTemp: 100
-    CostSuperDownTemp: 100
-    CostDropFood: 150
-    CostDropWater: 150
+    CostUpTemp: 30
+    CostDownTemp: 30
+    CostSuperUpTemp: 800
+    CostSuperDownTemp: 800
+    CostDropFood: 100
+    CostDropWater: 100
     UpTempAmount: 1
     UpTempTime: 1
     DownTempAmount: 1
     DownTempTime: 1
-    SuperUpTempAmount: 15
-    SuperDownTempAmount: 15
+    SuperUpTempAmount: 50
+    SuperDownTempAmount: 50
     GameFieldMinX: -5
     GameFieldMaxX: 5
     GameFieldMinY: -2.5
@@ -1131,12 +1131,12 @@ MonoBehaviour:
     DefaultTimeTakeDmg: 1
     DefaultHealthRegeneration: 10
     DefaultScaleTempDmg: 10
-    HungerDepletionSpeed: 0.5
+    HungerDepletionSpeed: 0.2
     HungerDepletionAmount: 1
     EatDepletionSpeed: 0.1
     EatDepletionAmount: 5
     EatThreshold: 60
-    waterDepletionSpeed: 0.5
+    waterDepletionSpeed: 0.2
     waterDepletionAmount: 1
     DrinkDepletionSpeed: 0.01
     DrinkDepletionAmount: 2
@@ -1146,8 +1146,8 @@ MonoBehaviour:
   NVirusStatsSettings:
     DefaultMaxHunger: 100
     DefaultMaxThirst: 100
-    DefaultStartHunger: 35
-    DefaultStartThirst: 40
+    DefaultStartHunger: 20
+    DefaultStartThirst: 20
     DefaultVirusHp: 5000
     DefaultMoveSpeed: 0.5
     DefaultAge: 0
@@ -4851,6 +4851,10 @@ MonoBehaviour:
   BerryBushPref: {fileID: 4399238845109204326, guid: 4318e9cfbf7654b4db5eaa4e06b152e0, type: 3}
   WaterSourcePref: {fileID: 7694905360005169324, guid: 9fee8deccbdc95746bb63fe3bd7d94d6, type: 3}
   CurEvoAlgorithm: {fileID: 1054066666}
+  AllFood: 0
+  AllWater: 0
+  countWaterSources: 0
+  CountBushes: 0
 --- !u!4 &1046923183
 Transform:
   m_ObjectHideFlags: 0
@@ -9531,7 +9535,7 @@ PrefabInstance:
     - target: {fileID: -3154233907282681839, guid: 01f5842376b39e54b9180d093c88f0c1, type: 3}
       propertyPath: FitnessFunction
       value: 
-      objectReference: {fileID: 6655582106877202208, guid: 54aa13ec527c0df43b4f8f20e991e0a1, type: 3}
+      objectReference: {fileID: 7947538387665980286, guid: fb8165b0f4243e248b837aafe55a18fd, type: 3}
     - target: {fileID: -3154233907282681839, guid: 01f5842376b39e54b9180d093c88f0c1, type: 3}
       propertyPath: ParentSelectionType
       value: 2

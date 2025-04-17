@@ -104,9 +104,9 @@ public class Interface : MonoBehaviour
         UpTempCost.text = _settingsManager.NWorldSettings.CostUpTemp.ToString() + "/" + _settingsManager.NWorldSettings.UpTempTime + "сек";
         DownTempCost.text = _settingsManager.NWorldSettings.CostDownTemp.ToString() + "/" + _settingsManager.NWorldSettings.DownTempTime + "сек";
         SuperUpTempCost.text = _settingsManager.NWorldSettings.CostSuperUpTemp.ToString() + "/" + _settingsManager.NWorldSettings.SuperUpTempAmount + "раз";
-        SuperDownTempCost.text = _settingsManager.NWorldSettings.CostUpTemp.ToString() + "/" + _settingsManager.NWorldSettings.SuperDownTempAmount + "раз";
+        SuperDownTempCost.text = _settingsManager.NWorldSettings.CostSuperDownTemp.ToString() + "/" + _settingsManager.NWorldSettings.SuperDownTempAmount + "раз";
         DropFoodCost.text = _settingsManager.NWorldSettings.CostDropFood.ToString() + "/раз";
-        DropWaterCost.text = _settingsManager.NWorldSettings.CostDropFood.ToString() + "/раз";
+        DropWaterCost.text = _settingsManager.NWorldSettings.CostDropWater.ToString() + "/раз";
     }
 
     public void SetSelectedObject(GameObject obj)
