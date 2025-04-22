@@ -7,7 +7,6 @@ using UnityEngine;
 public class RuleSelection : ISelection
 {
     public int MaxPopulationSize = 50;
-
     public override Virus[] UseSelection(Virus[] viruses, float[] fitnessValues)
     {
         List<Virus> virusSelections = new List<Virus>();
@@ -20,7 +19,6 @@ public class RuleSelection : ISelection
         {
             sumFitnessValues += fitnessValues[i];
         }
-
         while (virusSelections.Count < MaxPopulationSize)
         {
             float randSum = Random.Range(0, sumFitnessValues);
@@ -35,10 +33,7 @@ public class RuleSelection : ISelection
                     break;
                 }
             }
-
         }
-
-
         return virusSelections.ToArray();
     }
 }

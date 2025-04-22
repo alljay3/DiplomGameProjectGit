@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ClasscicGeneticAlgorithm : IEvoAlgorithm
+public class ElitGeneticAlgorithm : IEvoAlgorithm
 {
     public enum ParentSelectionTypes
     {
@@ -11,7 +11,7 @@ public class ClasscicGeneticAlgorithm : IEvoAlgorithm
         Outbreeding, // ѕервый родитель случайный, второй Ч наименее похожий на первого.
     }
     [SerializeField] Vector3 childSpawnByParrent = new Vector3(0, 1, 0);
-
+    [SerializeField] int EliteVirusCount = 2;
     [SerializeField] ParentSelectionTypes ParentSelectionType = ParentSelectionTypes.Panmixia;
     [SerializeField] IFitnessFunction FitnessFunction;
     [SerializeField] ICrossover Crossover;
@@ -37,7 +37,10 @@ public class ClasscicGeneticAlgorithm : IEvoAlgorithm
             virusFitnessResults.Add(FitnessFunction.UseFitnessFunction(virus));
         }
 
-        for (int i = 0; i < virusObjs.Count / 2; i++) 
+        List<Virus> eliteViruses = GetEliteViruses(virusObjs, virusFitnessResults, EliteVirusCount);
+
+
+        for (int i = 0; i < virusObjs.Count / 2; i++)
         {
             if (virusObjs.Count == 1)
                 return;
@@ -63,7 +66,7 @@ public class ClasscicGeneticAlgorithm : IEvoAlgorithm
 
                 for (int j = 0; j < virusObjs.Count; j++)
                 {
-                    if (j == index1) continue; 
+                    if (j == index1) continue;
 
                     float currentDifference = Mathf.Abs(virusFitnessResults[j] - parent1Fitness);
                     if (currentDifference < minDifference)
@@ -122,7 +125,17 @@ public class ClasscicGeneticAlgorithm : IEvoAlgorithm
 
         Mutation.UseMutation(newViruses.ToArray());
 
-        List<Virus> selectedViruses = Selection.UseSelection(newViruses.ToArray(), virusFitnessResults.ToArray()).ToList();
+        List<Virus> noElitVirus = newViruses.Except(eliteViruses).ToList();
+
+        List<float> NoElitVirusFitnessResults = new List<float>();
+
+        foreach (Virus virus in noElitVirus) 
+        {
+            NoElitVirusFitnessResults.Add(FitnessFunction.UseFitnessFunction(virus));
+        }
+
+        List<Virus> selectedViruses = Selection.UseSelection(noElitVirus.ToArray(), NoElitVirusFitnessResults.ToArray()).ToList();
+        selectedViruses.AddRange(eliteViruses);
         var virusesToDestroy = newViruses.Except(selectedViruses).ToList();
 
         foreach (var virus in virusesToDestroy)
@@ -134,4 +147,19 @@ public class ClasscicGeneticAlgorithm : IEvoAlgorithm
 
     }
 
+    // ћетод дл€ выбора элитных особей
+    private List<Virus> GetEliteViruses(List<Virus> viruses, List<float> fitnessResults, int eliteCount)
+    {
+        if (eliteCount <= 0) return new List<Virus>();
+
+        // —ортируем вирусы по fitness (от лучшего к худшему)
+        var sortedViruses = viruses
+            .Select((virus, index) => new { Virus = virus, Fitness = fitnessResults[index] })
+            .OrderByDescending(x => x.Fitness)
+            .Take(eliteCount)
+            .Select(x => x.Virus)
+            .ToList();
+
+        return sortedViruses;
+    }
 }

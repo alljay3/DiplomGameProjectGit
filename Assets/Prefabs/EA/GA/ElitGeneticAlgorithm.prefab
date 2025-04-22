@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4708662330755233062}
-  - component: {fileID: -3154233907282681839}
+  - component: {fileID: 1700667112833405082}
   m_Layer: 0
-  m_Name: ClassicGeneticAlgorithmV1
+  m_Name: ElitGeneticAlgorithm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-3154233907282681839
+--- !u!114 &1700667112833405082
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,10 +41,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6849351882727202673}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 984af03d193842f4aa0331770938a026, type: 3}
+  m_Script: {fileID: 11500000, guid: 5774f930f3619ef4fa4a6c99182a7a2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   childSpawnByParrent: {x: 0, y: 1, z: 0}
+  EliteVirusCount: 10
   ParentSelectionType: 2
   FitnessFunction: {fileID: 7947538387665980286, guid: fb8165b0f4243e248b837aafe55a18fd, type: 3}
   Crossover: {fileID: 1281982224124553072, guid: 14cc5f167599da048975e4c73a6097a3, type: 3}

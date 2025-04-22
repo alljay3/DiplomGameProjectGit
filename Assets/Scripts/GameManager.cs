@@ -17,11 +17,13 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int AllWater;
     [HideInInspector] public int countWaterSources;
     [HideInInspector] public int CountBushes;
+    [HideInInspector] public int CountVirus;
 
     private SettingsManager _settingsManager;
 
     private void Start()
     {
+        CountVirus = 0;
         _settingsManager = GameObject.FindFirstObjectByType<SettingsManager>();
         GWorldStats.Points = _settingsManager.NWorldSettings.StartPoints;
         GWorldStats.NumberStage = _settingsManager.NWorldSettings.FirstStage;
@@ -44,6 +46,11 @@ public class GameManager : MonoBehaviour
                 NextStage();
             }
         }
+    }
+
+    private void FixedUpdate()
+    {
+        CountVirus = FindObjectsByType<Virus>(FindObjectsSortMode.None).Length;
     }
 
     private void NextStage()

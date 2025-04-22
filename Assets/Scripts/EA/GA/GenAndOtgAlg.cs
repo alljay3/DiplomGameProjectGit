@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ClasscicGeneticAlgorithm : IEvoAlgorithm
+public class GenAndOtgAlg : IEvoAlgorithm
 {
     public enum ParentSelectionTypes
     {
@@ -15,29 +15,36 @@ public class ClasscicGeneticAlgorithm : IEvoAlgorithm
     [SerializeField] ParentSelectionTypes ParentSelectionType = ParentSelectionTypes.Panmixia;
     [SerializeField] IFitnessFunction FitnessFunction;
     [SerializeField] ICrossover Crossover;
-    [SerializeField] ISelection Selection;
+    [SerializeField] IOtgSelection Selection;
     [SerializeField] IMutation Mutation;
-
+    [SerializeField] public float TempCoff = 0.90f;
+    [SerializeField] public float StartTempOtg = 10000;
+    [HideInInspector] public float TempOtg = 10000;
     private GameManager _gameManager;
 
     public void Awake()
     {
         _gameManager = GameObject.FindFirstObjectByType<GameManager>();
     }
+    public void Start()
+    {
+        TempOtg = StartTempOtg;
+    }
 
     public override void BeginReproduction()
     {
         List<Virus> virusObjs = GameObject.FindObjectsByType<Virus>(FindObjectsSortMode.None).ToList();
         List<Virus> newViruses = virusObjs.ToList();
-        Debug.Log(newViruses.Count);
         List<float> virusFitnessResults = new List<float>();
+        Debug.Log(virusObjs.Count);
 
         foreach (Virus virus in virusObjs) // Подсчет функции приспособленности
         {
-            virusFitnessResults.Add(FitnessFunction.UseFitnessFunction(virus));
+            var fitnessRes = FitnessFunction.UseFitnessFunction(virus);
+            virusFitnessResults.Add(fitnessRes);
         }
 
-        for (int i = 0; i < virusObjs.Count / 2; i++) 
+        for (int i = 0; i < virusObjs.Count / 2; i++)
         {
             if (virusObjs.Count == 1)
                 return;
@@ -63,7 +70,7 @@ public class ClasscicGeneticAlgorithm : IEvoAlgorithm
 
                 for (int j = 0; j < virusObjs.Count; j++)
                 {
-                    if (j == index1) continue; 
+                    if (j == index1) continue;
 
                     float currentDifference = Mathf.Abs(virusFitnessResults[j] - parent1Fitness);
                     if (currentDifference < minDifference)
@@ -122,6 +129,8 @@ public class ClasscicGeneticAlgorithm : IEvoAlgorithm
 
         Mutation.UseMutation(newViruses.ToArray());
 
+
+
         List<Virus> selectedViruses = Selection.UseSelection(newViruses.ToArray(), virusFitnessResults.ToArray()).ToList();
         var virusesToDestroy = newViruses.Except(selectedViruses).ToList();
 
@@ -133,5 +142,4 @@ public class ClasscicGeneticAlgorithm : IEvoAlgorithm
 
 
     }
-
 }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6849351882727202673
+--- !u!1 &6214981609385595367
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4708662330755233062}
-  - component: {fileID: -3154233907282681839}
+  - component: {fileID: 5087252092057398792}
+  - component: {fileID: 1375570849390258837}
   m_Layer: 0
-  m_Name: ClassicGeneticAlgorithmV1
+  m_Name: OtgSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4708662330755233062
+--- !u!4 &5087252092057398792
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6849351882727202673}
+  m_GameObject: {fileID: 6214981609385595367}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9394651, y: -1.0976781, z: -0.063048795}
+  m_LocalPosition: {x: -0.102671035, y: -0.8190047, z: -0.020464288}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-3154233907282681839
+--- !u!114 &1375570849390258837
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6849351882727202673}
+  m_GameObject: {fileID: 6214981609385595367}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 984af03d193842f4aa0331770938a026, type: 3}
+  m_Script: {fileID: 11500000, guid: d7ce7d94f6f1ce84fb1fd7203d4e7d73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  childSpawnByParrent: {x: 0, y: 1, z: 0}
-  ParentSelectionType: 2
-  FitnessFunction: {fileID: 7947538387665980286, guid: fb8165b0f4243e248b837aafe55a18fd, type: 3}
-  Crossover: {fileID: 1281982224124553072, guid: 14cc5f167599da048975e4c73a6097a3, type: 3}
-  Selection: {fileID: 5981137245501422476, guid: c0fc7f2ad14daaa4e8caa1aff84fcdb5, type: 3}
-  Mutation: {fileID: 7749012537767525451, guid: 7a17d84371073b54499d305cb7349fb5, type: 3}
+  MaxSelectionSize: 100

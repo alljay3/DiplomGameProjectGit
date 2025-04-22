@@ -6,6 +6,7 @@ public class Interface : MonoBehaviour
     private GameManager _gameManager;
 
     [SerializeField] public TMPro.TextMeshProUGUI CurrentStage;
+    [SerializeField] public TMPro.TextMeshProUGUI CountViruses;
     [SerializeField] public TMPro.TextMeshProUGUI Points;
     [SerializeField] public TMPro.TextMeshProUGUI TimeLeft;
     [SerializeField] public TMPro.TextMeshProUGUI Temp;
@@ -101,12 +102,14 @@ public class Interface : MonoBehaviour
         Points.text = _gameManager.GWorldStats.Points.ToString();
         TimeLeft.text = _gameManager.GWorldStats.TimeLeft.ToString();
         Temp.text = _gameManager.GWorldStats.CurTemp.ToString();
+        CountViruses.text = _gameManager.CountVirus.ToString();
         UpTempCost.text = _settingsManager.NWorldSettings.CostUpTemp.ToString() + "/" + _settingsManager.NWorldSettings.UpTempTime + "сек";
         DownTempCost.text = _settingsManager.NWorldSettings.CostDownTemp.ToString() + "/" + _settingsManager.NWorldSettings.DownTempTime + "сек";
         SuperUpTempCost.text = _settingsManager.NWorldSettings.CostSuperUpTemp.ToString() + "/" + _settingsManager.NWorldSettings.SuperUpTempAmount + "раз";
         SuperDownTempCost.text = _settingsManager.NWorldSettings.CostSuperDownTemp.ToString() + "/" + _settingsManager.NWorldSettings.SuperDownTempAmount + "раз";
         DropFoodCost.text = _settingsManager.NWorldSettings.CostDropFood.ToString() + "/раз";
         DropWaterCost.text = _settingsManager.NWorldSettings.CostDropWater.ToString() + "/раз";
+
     }
 
     public void SetSelectedObject(GameObject obj)

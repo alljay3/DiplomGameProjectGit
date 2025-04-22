@@ -11,7 +11,6 @@ public class FirstMutation : IMutation
         {
             if (Random.value > MutationVirusRate) 
                 continue;
-
             if (Random.value <= MutationAttributeRate)
                 virus.Attributes.ColdResistance += Random.value < 0.5f ? Random.Range(MutationAttributeRange.Min, MutationAttributeRange.Max) : -1 * Random.Range(MutationAttributeRange.Min, MutationAttributeRange.Max);
             if (Random.value <= MutationAttributeRate)
@@ -32,8 +31,6 @@ public class FirstMutation : IMutation
             {
                 virus.Attributes.ComfortTemperature += Random.value < 0.5f ? Random.Range(MutationAttributeRange.Min, MutationAttributeRange.Max) : -1 * Random.Range(MutationAttributeRange.Min, MutationAttributeRange.Max);
             }    
-
-
         }
         return viruses;
     }
