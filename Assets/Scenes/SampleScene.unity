@@ -5253,7 +5253,7 @@ MonoBehaviour:
   VirusPref: {fileID: 5301207375069603659, guid: 9e18ef42f7167d54e8e0483af4c309a2, type: 3}
   BerryBushPref: {fileID: 4399238845109204326, guid: 4318e9cfbf7654b4db5eaa4e06b152e0, type: 3}
   WaterSourcePref: {fileID: 7694905360005169324, guid: 9fee8deccbdc95746bb63fe3bd7d94d6, type: 3}
-  CurEvoAlgorithm: {fileID: 1962203839}
+  CurEvoAlgorithm: {fileID: 1540438950}
   AllFood: 0
   AllWater: 0
   countWaterSources: 0
@@ -7629,6 +7629,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1513795502}
   m_CullTransparentMesh: 1
+--- !u!114 &1540438950 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -3154233907282681839, guid: 01f5842376b39e54b9180d093c88f0c1, type: 3}
+  m_PrefabInstance: {fileID: 6768174735517798789}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 984af03d193842f4aa0331770938a026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1571588291
 GameObject:
   m_ObjectHideFlags: 0
@@ -9360,17 +9371,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1960249771}
   m_CullTransparentMesh: 1
---- !u!114 &1962203839 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3806205589188312487, guid: 889e453f75db3574283f8a37b33601b4, type: 3}
-  m_PrefabInstance: {fileID: 4747299290302416781}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ff2a6c6d6ce2ea438ef4d7e995ccfb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1966802481
 GameObject:
   m_ObjectHideFlags: 0

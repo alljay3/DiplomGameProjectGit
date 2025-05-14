@@ -147,15 +147,18 @@ public class DiffEvolution : IEvoAlgorithm
             int index3 = availableIndices[Random.Range(0, availableIndices.Count)];
             Virus parrent3 = newViruses[index3];
 
-            Virus diffVirus = DiffCrossover(parrent1, parrent2, parrent3);
-            if (FitnessFunction.UseFitnessFunction(diffVirus) > FitnessFunction.UseFitnessFunction(newViruses[i]))
+            Virus mutVirus = DiffCrossover(parrent1, parrent2, parrent3);
+            Virus probVirus = Crossover.UseCrossover(newViruses[i], mutVirus, _gameManager.VirusPref);
+            probVirus.transform.position += childSpawnByParrent;
+            Destroy(mutVirus.gameObject);
+            if (FitnessFunction.UseFitnessFunction(probVirus) > FitnessFunction.UseFitnessFunction(newViruses[i]))
             {
                 Destroy(newViruses[i].gameObject);
-                newViruses[i] = diffVirus;
+                newViruses[i] = probVirus;
             }
             else
             {
-                Destroy(diffVirus.gameObject);
+                Destroy(probVirus.gameObject);
             }
 
 
@@ -186,7 +189,6 @@ public class DiffEvolution : IEvoAlgorithm
 
         Virus newVir = GameObject.Instantiate(_gameManager.VirusPref, parrent1.transform.position, Quaternion.identity);
         newVir.GetComponent<Virus>().SetParrentAttribute(offspringAttributes);
-        newVir.transform.position += childSpawnByParrent;
         return newVir;
     }
 
