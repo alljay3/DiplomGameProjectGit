@@ -149,6 +149,7 @@ public class DiffEvolution : IEvoAlgorithm
 
             Virus mutVirus = DiffCrossover(parrent1, parrent2, parrent3);
             Virus probVirus = Crossover.UseCrossover(newViruses[i], mutVirus, _gameManager.VirusPref);
+            probVirus.Stats.CurrentHealth = newViruses[i].Stats.CurrentHealth;
             probVirus.transform.position += childSpawnByParrent;
             Destroy(mutVirus.gameObject);
             if (FitnessFunction.UseFitnessFunction(probVirus) > FitnessFunction.UseFitnessFunction(newViruses[i]))

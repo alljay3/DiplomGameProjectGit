@@ -25,9 +25,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Time.timeScale = 3;
-        _logFilePath = Application.persistentDataPath + "/VirusCountLog.txt";
-        File.WriteAllText(_logFilePath, ""); // Очищаем файл или создаем пустой
+        //Time.timeScale = 2;
+        //_logFilePath = Application.persistentDataPath + "/VirusCountLog.txt";
+        //File.WriteAllText(_logFilePath, ""); // Очищаем файл или создаем пустой
         CountVirus = 0;
         _settingsManager = GameObject.FindFirstObjectByType<SettingsManager>();
         GWorldStats.Points = _settingsManager.NWorldSettings.StartPoints;
@@ -60,10 +60,10 @@ public class GameManager : MonoBehaviour
 
     private void NextStage()
     {
-        if(GWorldStats.NumberStage < 500)
-        {
-            File.AppendAllText(_logFilePath, CountVirus.ToString() + "\n");
-        }
+        //if(GWorldStats.NumberStage < 150)
+        //{
+        //    File.AppendAllText(_logFilePath, CountVirus.ToString() + "\n");
+        //}
         GWorldStats.NumberStage += 1;
         Virus[] viruses = FindObjectsByType<Virus>(FindObjectsSortMode.None);
         foreach (var virus in viruses)
